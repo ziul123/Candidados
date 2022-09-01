@@ -3,7 +3,7 @@ CREATE TABLE Politico(
 	Nome VARCHAR(45) NOT NULL,
 	Candidatura VARCHAR(45),
 	DataNasc DATE NOT NULL,
-	Foto MEDIUMBLOB
+	Foto MEDIUMBLOB NOT NULL
 );
 
 
