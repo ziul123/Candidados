@@ -10,9 +10,9 @@ CREATE TABLE Politico(
 CREATE TABLE Partido(
 	NumPart INT PRIMARY KEY,
 	Nome VARCHAR(45) NOT NULL,
-	VerbaAnual DECIMAL(15,2),
+	VerbaAnual DECIMAL(15,2) NOT NULL,
 	DataCriacao DATE NOT NULL,
-	Logo MEDIUMBLOB
+	Logo MEDIUMBLOB NOT NULL
 );
 
 
@@ -29,9 +29,9 @@ CREATE TABLE PoliticoPartido(
 
 CREATE TABLE Beneficio(
 	CodBen INT AUTO_INCREMENT PRIMARY KEY,
-	Nome VARCHAR(45),
+	Nome VARCHAR(45) NOT NULL,
 	Descricao VARCHAR(100),
-	Valor DECIMAL(15,2)
+	Valor DECIMAL(15,2) NOT NULL
 );
 
 
@@ -46,8 +46,8 @@ CREATE TABLE PoliticoPossuiBeneficio(
 
 CREATE TABLE ProjetoLei(
 	NumProj INT PRIMARY KEY,
-	Descricao VARCHAR(100),
-	DataCriacao DATE,
+	Descricao VARCHAR(100) NOT NULL,
+	DataCriacao DATE NOT NULL,
 	Aprovacao ENUM('APROVADO','NÃO APROVADO')
 );
 
@@ -73,14 +73,14 @@ CREATE TABLE PoliticoVotaProjetoLei(
 
 CREATE TABLE Local(
 	CodLoc INT AUTO_INCREMENT PRIMARY KEY,
-	Estado VARCHAR(45),
-	Municipio VARCHAR(45)
+	Estado VARCHAR(45) NOT NULL,
+	Municipio VARCHAR(45) NOT NULL
 );
 
 
 CREATE TABLE Orgao(
 	CodOrg INT AUTO_INCREMENT PRIMARY KEY,
-	Nome VARCHAR(45),
+	Nome VARCHAR(45) NOT NULL,
 	LocalCodLoc INT,
 	FOREIGN KEY (LocalCodLoc) REFERENCES Local(CodLoc)
 );
@@ -89,11 +89,11 @@ CREATE TABLE Orgao(
 CREATE TABLE ExerceCargoEm(
 	OrgaoCodOrg INT,
 	PoliticoCPF CHAR(11),
-	DataEleito DATE,
+	DataEleito DATE NOT NULL,
 	NomeCargo VARCHAR(45) NOT NULL,
 	Ambito VARCHAR(45) NOT NULL,
-	TempoMandato INT,
-	Salario DECIMAL(15,2),
+	TempoMandato INT NOT NULL,
+	Salario DECIMAL(15,2) NOT NULL,
 	FOREIGN KEY (OrgaoCodOrg) REFERENCES Orgao(CodOrg),
 	FOREIGN KEY (PoliticoCPF) REFERENCES Politico(CPF),
 	PRIMARY KEY (OrgaoCodOrg, PoliticoCPF, DataEleito)
@@ -103,10 +103,10 @@ CREATE TABLE ExerceCargoEm(
 
 CREATE TABLE Processo(
 	NumProc INT PRIMARY KEY,
-	Vara VARCHAR(45),
-	Andamento VARCHAR(45),
-	DataInicio DATE,
-	Autor VARCHAR(45),
+	Vara VARCHAR(45) NOT NULL,
+	Andamento VARCHAR(45) NOT NULL,
+	DataInicio DATE NOT NULL,
+	Autor VARCHAR(45) NOT NULL,
 	Resultado ENUM('CULPADO', 'INOCENTADO')
 );
 
