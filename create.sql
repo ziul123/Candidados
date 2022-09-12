@@ -118,3 +118,18 @@ CREATE TABLE ProcessoPolitico(
 	FOREIGN KEY (PoliticoCPF) REFERENCES Politico(CPF),
 	PRIMARY KEY (ProcessoNumProc, PoliticoCPF)
 );
+
+
+CREATE VIEW UltimoPartido AS
+SELECT t1.* FROM PoliticoPartido AS t1
+LEFT JOIN PoliticoPartido AS t2
+ON t1.PoliticoCPF=t2.PoliticoCPF AND t1.DataFiliacao < t2.DataFiliacao
+WHERE t2.PoliticoCPF IS NULL;
+
+
+
+CREATE VIEW UltimoCargo AS
+SELECT t1.PoliticoCPF, t1.DataEleito, t1.NomeCargo FROM ExerceCargoEm AS t1
+LEFT JOIN ExerceCargoEm AS t2
+ON t1.PoliticoCPF=t2.PoliticoCPF AND t1.DataEleito < t2.DataEleito
+WHERE t2.PoliticoCPF IS NULL;
