@@ -16,34 +16,36 @@ class ProcessoDAO:
         except Exception as ex:
             print(ex)
 
-
     def update(self, cursor, processo):
-        try:
             sql = ("UPDATE processo SET andamento=%(andamento)s, dataInicio=%(dataInicio)s, "
                     "autor=%(autor)s, resultado=%(resultado)s WHERE numProc=%(numProc)s;")
+        try:
             cursor.execute(sql, vars(processo))
         except Exception as ex:
             print(ex)
 
-    def delete(cursor, numProc):
-        pass
+    def delete(self, cursor, numProc):
+        sql = ("DELETE FROM processoPolitico WHERE processoNumProc=%(numProc)s; "
+                "DELETE FROM processo WHERE numProc=%(numProc)s;")
+        try:
+            cursor.execute(sql, {"numProc":numProc})
+        except:
+            print(ex)
 
     def get(self, cursor, numProc):
-        try:
             sql = "SELECT * FROM processo WHERE numProc=%(numProc)s"
-            cursor.execute(sql)
-            result = cursor.fetchall()
-            return result
-        except Exception as ex:
-            print(ex)
-            return None
-
-    def getAll(cursor):
         try:
-            sql = "SELECT * FROM processo;"
             cursor.execute(sql)
             result = cursor.fetchall()
             return result
         except Exception as ex:
             print(ex)
-            return None
+
+    def getAll(self, cursor):
+            sql = "SELECT * FROM processo;"
+        try:
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            return result
+        except Exception as ex:
+            print(ex)
