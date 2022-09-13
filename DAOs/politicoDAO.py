@@ -14,7 +14,7 @@ class PoliticoDao():
         try:
             data = {'CPF': politico.cpf, 'nome': politico.nome,
             'candidatura': politico.candidatura, 'dataNasc': politico.dataNasc, 'foto': politico.foto}
-            sql = "INSERT INTO Politico VALUES(%(CPF)s, %(nome)s, %(candidatura)s, %(dataNasc)s, %(foto)s)"
+            sql = "INSERT INTO politico VALUES(%(CPF)s, %(nome)s, %(candidatura)s, %(dataNasc)s, %(foto)s)"
             cursor.execute(sql, data)
         except Exception as ex:
             print(ex)
@@ -23,7 +23,7 @@ class PoliticoDao():
         try:
             data = {'CPF': politico.cpf, 'nome': politico.nome,
             'candidatura': politico.candidatura, 'dataNasc': politico.dataNasc, 'foto': politico.foto}
-            sql = "UPDATE Politico SET nome = %(nome)s, candidatura = %(candidatura)s, dataNasc = %(dataNasc)s, Foto =' %(foto)s \
+            sql = "UPDATE politico SET nome = %(nome)s, candidatura = %(candidatura)s, dataNasc = %(dataNasc)s, Foto =' %(foto)s \
                 WHERE CPF = %(CPF)s"
             cursor.execute(sql, data)
         except Exception as ex:
@@ -31,7 +31,7 @@ class PoliticoDao():
 
     def delete(self, cursor, CPF):
         try:
-            sql = f"DELETE FROM poltico WHERE CPF = '{CPF}'"
+            sql = f"DELETE FROM politico WHERE CPF = '{CPF}'"
             cursor.execute(sql)
         except Exception as ex:
             print(ex)
