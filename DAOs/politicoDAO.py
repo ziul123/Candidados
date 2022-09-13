@@ -19,11 +19,11 @@ class PoliticoDao():
         except Exception as ex:
             print(ex)
 
-    def update(self, cursor, politico, codigo):
+    def update(self, cursor, politico, CPF):
         try:
-            data = {'CPF': politico.cpf, 'nome': politico.nome,
+            data = {'CPF': CPF, 'nome': politico.nome,
             'candidatura': politico.candidatura, 'dataNasc': politico.dataNasc, 'foto': politico.foto}
-            sql = "UPDATE politico SET nome = %(nome)s, candidatura = %(candidatura)s, dataNasc = %(dataNasc)s, Foto =' %(foto)s \
+            sql = "UPDATE politico SET nome = %(nome)s, candidatura = %(candidatura)s, dataNasc = %(dataNasc)s, foto =' %(foto)s \
                 WHERE CPF = %(CPF)s"
             cursor.execute(sql, data)
         except Exception as ex:

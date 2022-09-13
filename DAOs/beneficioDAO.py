@@ -4,7 +4,7 @@ class Beneficio():
         self.nome = nome
         self.valor = valor
 
-class PoliticoDao():
+class BeneficioDao():
     def __init__():
         pass
 
@@ -18,7 +18,7 @@ class PoliticoDao():
 
     def update(self, cursor, beneficio, codBen):
         try:
-            data = {'codBen': beneficio.codBen, 'nome': beneficio.nome, 'valor': beneficio.valor}
+            data = {'codBen': codBen, 'nome': beneficio.nome, 'valor': beneficio.valor}
             sql = "UPDATE beneficio SET nome = %(nome)s, valor = %(valor)s \
                 WHERE codBen = %(codBen)s"
             cursor.execute(sql, data)

@@ -22,7 +22,7 @@ CREATE TABLE politicoPartido(
 	dataFiliacao DATE,
 	cargo VARCHAR(45),
 	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF),
-	FOREIGN KEY (partidoNumPart) REFERENCES partido(NumPart),
+	FOREIGN KEY (partidoNumPart) REFERENCES partido(numPart),
 	PRIMARY KEY (politicoCPF, partidoNumPart, dataFiliacao)
 );
 
