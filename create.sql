@@ -1,137 +1,134 @@
-CREATE TABLE Politico(
+CREATE TABLE politico(
 	CPF CHAR(11) PRIMARY KEY,
-	Nome VARCHAR(45) NOT NULL,
-	Candidatura VARCHAR(45),
-	DataNasc DATE NOT NULL,
-	Foto MEDIUMBLOB NOT NULL
+	nome VARCHAR(45) NOT NULL,
+	candidatura VARCHAR(45),
+	dataNasc DATE NOT NULL,
+	foto MEDIUMBLOB NOT NULL
 );
 
 
-CREATE TABLE Partido(
-	NumPart INT PRIMARY KEY,
-	Nome VARCHAR(45) NOT NULL,
-	VerbaAnual DECIMAL(15,2) NOT NULL,
-	DataCriacao DATE NOT NULL,
-	Logo MEDIUMBLOB NOT NULL
+CREATE TABLE partido(
+	numPart INT PRIMARY KEY,
+	nome VARCHAR(45) NOT NULL,
+	verbaAnual DECIMAL(15,2) NOT NULL,
+	dataCriacao DATE NOT NULL,
+	logo MEDIUMBLOB NOT NULL
 );
 
 
-CREATE TABLE PoliticoPartido(
-	PoliticoCPF CHAR(11),
-	PartidoNumPart INT,
-	DataFiliacao DATE,
-	Cargo VARCHAR(45),
-	FOREIGN KEY (PoliticoCPF) REFERENCES Politico(CPF),
-	FOREIGN KEY (PartidoNumPart) REFERENCES Partido(NumPart),
-	PRIMARY KEY (PoliticoCPF, PartidoNumPart, DataFiliacao)
+CREATE TABLE politicoPartido(
+	politicoCPF CHAR(11),
+	partidoNumPart INT,
+	dataFiliacao DATE,
+	cargo VARCHAR(45),
+	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF),
+	FOREIGN KEY (partidoNumPart) REFERENCES partido(NumPart),
+	PRIMARY KEY (politicoCPF, partidoNumPart, dataFiliacao)
 );
 
 
-CREATE TABLE Beneficio(
-	CodBen INT AUTO_INCREMENT PRIMARY KEY,
-	Nome VARCHAR(45) NOT NULL,
-	Descricao VARCHAR(100),
-	Valor DECIMAL(15,2) NOT NULL
+CREATE TABLE beneficio(
+	codBen INT AUTO_INCREMENT PRIMARY KEY,
+	nome VARCHAR(45) NOT NULL,
+	descricao VARCHAR(100),
+	valor DECIMAL(15,2) NOT NULL
 );
 
 
-CREATE TABLE PoliticoPossuiBeneficio(
-	PoliticoCPF CHAR(11),
-	BeneficioCodBen INT,
-	FOREIGN KEY (PoliticoCPF) REFERENCES Politico(CPF),
-	FOREIGN KEY (BeneficioCodBen) REFERENCES Beneficio(CodBen),
-	PRIMARY KEY (PoliticoCPF, BeneficioCodBen)
+CREATE TABLE politicoPossuiBeneficio(
+	politicoCPF CHAR(11),
+	beneficioCodBen INT,
+	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF),
+	FOREIGN KEY (beneficioCodBen) REFERENCES beneficio(codBen),
+	PRIMARY KEY (politicoCPF, beneficioCodBen)
 );
 
 
-CREATE TABLE ProjetoLei(
-	NumProj INT PRIMARY KEY,
-	Descricao VARCHAR(100) NOT NULL,
-	DataCriacao DATE NOT NULL,
-	Aprovacao ENUM('APROVADO','NÃO APROVADO')
+CREATE TABLE projetoLei(
+	numProj INT PRIMARY KEY,
+	descricao VARCHAR(100) NOT NULL,
+	dataCriacao DATE NOT NULL,
+	aprovacao ENUM('APROVADO','NÃO APROVADO')
 );
 
 
-CREATE TABLE PoliticoEscreveProjetoLei(
-	PoliticoCPF CHAR(11),
-	ProjetoLeiNumProj INT,
-	FOREIGN KEY (PoliticoCPF) REFERENCES Politico(CPF),
-	FOREIGN KEY (ProjetoLeiNumProj) REFERENCES ProjetoLei(NumProj),
-	PRIMARY KEY (PoliticoCPF, ProjetoLeiNumProj)
+CREATE TABLE politicoEscreveProjetoLei(
+	politicoCPF CHAR(11),
+	projetoLeiNumProj INT,
+	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF),
+	FOREIGN KEY (projetoLeiNumProj) REFERENCES projetoLei(numProj),
+	PRIMARY KEY (politicoCPF, projetoLeiNumProj)
 );
 
 
-CREATE TABLE PoliticoVotaProjetoLei(
-	PoliticoCPF CHAR(11),
-	ProjetoLeiNumProj INT,
-	Voto VARCHAR(45),
-	FOREIGN KEY (PoliticoCPF) REFERENCES Politico(CPF),
-	FOREIGN KEY (ProjetoLeiNumProj) REFERENCES ProjetoLei(NumProj),
-	PRIMARY KEY (PoliticoCPF, ProjetoLeiNumProj)
+CREATE TABLE politicoVotaProjetoLei(
+	politicoCPF CHAR(11),
+	projetoLeiNumProj INT,
+	voto VARCHAR(45),
+	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF),
+	FOREIGN KEY (projetoLeiNumProj) REFERENCES projetoLei(numProj),
+	PRIMARY KEY (politicoCPF, projetoLeiNumProj)
 );
 
 
 CREATE TABLE Local(
-	CodLoc INT AUTO_INCREMENT PRIMARY KEY,
-	Estado VARCHAR(45) NOT NULL,
-	Municipio VARCHAR(45) NOT NULL
+	codLoc INT AUTO_INCREMENT PRIMARY KEY,
+	estado VARCHAR(45) NOT NULL,
+	municipio VARCHAR(45) NOT NULL
 );
 
 
-CREATE TABLE Orgao(
-	CodOrg INT AUTO_INCREMENT PRIMARY KEY,
-	Nome VARCHAR(45) NOT NULL,
-	LocalCodLoc INT,
-	FOREIGN KEY (LocalCodLoc) REFERENCES Local(CodLoc)
+CREATE TABLE orgao(
+	codOrg INT AUTO_INCREMENT PRIMARY KEY,
+	nome VARCHAR(45) NOT NULL,
+	localCodLoc INT,
+	FOREIGN KEY (localCodLoc) REFERENCES Local(codLoc)
 );
 
 
-CREATE TABLE ExerceCargoEm(
-	OrgaoCodOrg INT,
-	PoliticoCPF CHAR(11),
-	DataEleito DATE NOT NULL,
-	NomeCargo VARCHAR(45) NOT NULL,
-	Ambito VARCHAR(45) NOT NULL,
-	TempoMandato INT NOT NULL,
-	Salario DECIMAL(15,2) NOT NULL,
-	FOREIGN KEY (OrgaoCodOrg) REFERENCES Orgao(CodOrg),
-	FOREIGN KEY (PoliticoCPF) REFERENCES Politico(CPF),
-	PRIMARY KEY (OrgaoCodOrg, PoliticoCPF, DataEleito)
+CREATE TABLE exerceCargoEm(
+	orgaoCodOrg INT,
+	politicoCPF CHAR(11),
+	dataEleito DATE NOT NULL,
+	nomeCargo VARCHAR(45) NOT NULL,
+	ambito VARCHAR(45) NOT NULL,
+	tempoMandato INT NOT NULL,
+	salario DECIMAL(15,2) NOT NULL,
+	FOREIGN KEY (orgaoCodOrg) REFERENCES orgao(codOrg),
+	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF),
+	PRIMARY KEY (orgaoCodOrg, politicoCPF, dataEleito)
 );
 
 
 
-CREATE TABLE Processo(
-	NumProc INT PRIMARY KEY,
-	Vara VARCHAR(45) NOT NULL,
-	Andamento VARCHAR(45) NOT NULL,
-	DataInicio DATE NOT NULL,
-	Autor VARCHAR(45) NOT NULL,
-	Resultado ENUM('CULPADO', 'INOCENTADO')
+CREATE TABLE processo(
+	numProc INT PRIMARY KEY,
+	vara VARCHAR(45) NOT NULL,
+	andamento VARCHAR(45) NOT NULL,
+	dataInicio DATE NOT NULL,
+	autor VARCHAR(45) NOT NULL,
+	resultado ENUM('CULPADO', 'INOCENTADO')
 );
 
 
-CREATE TABLE ProcessoPolitico(
-	ProcessoNumProc INT,
-	PoliticoCPF CHAR(11),
-	FOREIGN KEY (ProcessoNumProc) REFERENCES Processo(NumProc),
-	FOREIGN KEY (PoliticoCPF) REFERENCES Politico(CPF),
-	PRIMARY KEY (ProcessoNumProc, PoliticoCPF)
+CREATE TABLE processoPolitico(
+	processoNumProc INT,
+	politicoCPF CHAR(11),
+	FOREIGN KEY (processoNumProc) REFERENCES processo(numProc),
+	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF),
+	PRIMARY KEY (processoNumProc, politicoCPF)
 );
 
 
-CREATE VIEW UltimoPartido AS
-SELECT t1.* FROM PoliticoPartido AS t1
-LEFT JOIN PoliticoPartido AS t2
-ON t1.PoliticoCPF=t2.PoliticoCPF AND t1.DataFiliacao < t2.DataFiliacao
-WHERE t2.PoliticoCPF IS NULL;
+CREATE VIEW ultimoPartido AS
+SELECT t1.* FROM politicoPartido AS t1
+LEFT JOIN politicoPartido AS t2
+ON t1.politicoCPF=t2.politicoCPF AND t1.dataFiliacao < t2.dataFiliacao
+WHERE t2.politicoCPF IS NULL;
 
 
-CREATE VIEW UltimoCargo AS
-SELECT t1.PoliticoCPF, t1.DataEleito, t1.NomeCargo FROM ExerceCargoEm AS t1
-LEFT JOIN ExerceCargoEm AS t2
-ON t1.PoliticoCPF=t2.PoliticoCPF AND t1.DataEleito < t2.DataEleito
-WHERE t2.PoliticoCPF IS NULL;
-
-
-
+CREATE VIEW ultimoCargo AS
+SELECT t1.politicoCPF, t1.dataEleito, t1.nomeCargo FROM exerceCargoEm AS t1
+LEFT JOIN exerceCargoEm AS t2
+ON t1.politicoCPF=t2.politicoCPF AND t1.dataEleito < t2.dataEleito
+WHERE t2.politicoCPF IS NULL;
