@@ -4,7 +4,8 @@ class Local():
         self.estado = estado
         self.municipio = municipio
 
-class LocalDAO():
+class LocalDAO:
+    
     def __init__():
         pass
 
