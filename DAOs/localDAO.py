@@ -32,7 +32,7 @@ class LocalDAO():
         except Exception as ex:
             print(ex)
 
-    def findById(self, cursor, codLoc):
+    def get(self, cursor, codLoc):
         try:
             sql = f"SELECT * FROM local WHERE codLoc = '{codLoc}'"
             cursor.execute(sql)
@@ -45,7 +45,7 @@ class LocalDAO():
             print(ex)
             return None
 
-    def findAll(self, cursor):
+    def getAll(self, cursor):
         try:
             sql = "SELECT * FROM local"
             cursor.execute(sql)
