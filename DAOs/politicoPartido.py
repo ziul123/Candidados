@@ -36,7 +36,7 @@ class PoliticoPartido:
         except Exception as ex:
             print(ex)
 
-    def findById(self, cursor, politicoCPF, partidoNumPart, dataFiliacao):
+    def get(self, cursor, politicoCPF, partidoNumPart, dataFiliacao):
 
         sql = f"SELECT * FROM politicoPartido WHERE (politicoCPF = '{politicoCPF}' AND partidoNumPart = '{partidoNumPart}' \
             AND dataFiliacao = '{dataFiliacao}')"
@@ -51,7 +51,7 @@ class PoliticoPartido:
         politicoPartido = PoliticoPartido(*result)
         return politicoPartido
     
-    def findAll(self, cursor):
+    def getAll(self, cursor):
 
         sql = "SELECT * FROM politicoPartido"
 
