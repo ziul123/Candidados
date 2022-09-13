@@ -6,53 +6,45 @@ class Partido():
         self.logo = logo        
 
 class PartidoDAO():
-    def __init__():
-        pass
-
     def create(self, cursor, partido):
+        sql = "INSERT INTO partido VALUES(%(numPart)s, %(nome)s, %(dataCriacao)s, %(logo)s);"
         try:
-            data = {'numPart': partido.numPart, 'nome': partido.nome, 'dataCriacao': partido.dataCriacao, 'logo': partido.logo}
-            sql = "INSERT INTO partido VALUES(%(numPart)s, %(nome)s, %(dataCriacao)s, %(logo)s)"
-            cursor.execute(sql, data)
+            cursor.execute(sql, vars(partido))
         except Exception as ex:
             print(ex)
 
-    def update(self, cursor, partido, numPart):
+    def update(self, cursor, partido):
+        sql = ("UPDATE partido SET nome=%(nome)s, dataCriacao=%(dataCriacao)s, logo=%(logo)s "
+                "WHERE numPart=%(numPart)s;")
         try:
-            data = {'numPart': numPart, 'nome': partido.nome, 'dataCriacao': partido.dataCriacao, 'logo': partido.logo}
-            sql = "UPDATE partido SET nome = %(nome)s, dataCriacao = %(dataCriacao)s, logo = %(logo)s \
-                WHERE numPart = %(numPart)s"
-            cursor.execute(sql, data)
+            cursor.execute(sql, vars(partido))
         except Exception as ex:
             print(ex)
 
     def delete(self, cursor, numPart):
+        sql = ("DELETE FROM politicoPartido WHERE partidoNumPart=%(numPart)s; "
+                "DELETE FROM partido WHERE numPart=%(numPart)s;")
         try:
-            sql = f"DELETE FROM partido WHERE numPart = '{numPart}'"
             cursor.execute(sql)
         except Exception as ex:
             print(ex)
 
-    def findById(self, cursor, numPart):
+    def get(self, cursor, numPart):
+        sql = "SELECT * FROM partido WHERE numpart=%(numPart)s;"
         try:
-            sql = f"SELECT * FROM partido WHERE numpart = '{numPart}'"
             cursor.execute(sql)
             result = cursor.fetchone()
-
-            numPart, nome, dataCriacao, logo = result
-            partido = Partido(numPart, nome, dataCriacao, logo)
+            partido = Partido(*result)
             return partido
         except Exception as ex:
             print(ex)
-            return None
 
-    def findAll(self, cursor):
+    def getAll(self, cursor):
+        sql = "SELECT * FROM partido;"
         try:
-            sql = "SELECT * FROM partido"
             cursor.execute(sql)
             result = cursor.fetchall()
-
-            return result
+            partidos = [Partido(*x) for x in result]
+            return partidos
         except Exception as ex:
             print(ex)
-            return None

@@ -8,59 +8,48 @@ class ProjetoLei:
 
 class ProjetoLeiDAO:
 
-    def __init__(self):
-        pass
-
     def create(self, cursor, projetoLei):
-
+        sql = "INSERT INTO projetoLei VALUES(%(numProj)s, %(descricao)s, %(dataCriacao)s, %(aprovacao)s)"
         try:
-            data = {'numProj': projetoLei.numProj, 'descricao': projetoLei.descricao,
-            'dataCriacao': projetoLei.dataCriacao, 'aprovacao': projetoLei.aprovacao}
-            sql = "INSERT INTO projetoLei VALUES(%(numProj)s, %(descricao)s, %(dataCriacao)s, %(aprovacao)s)"
-            cursor.execute(sql, data)
+            cursor.execute(sql, vars(projetoLei))
         except Exception as ex:
             print(ex)
 
-    def update(self, cursor, projetoLei, numProj):
-
+    def update(self, cursor, projetoLei):
+        sql = ("UPDATE projetoLei SET descricao=%(descricao)s, dataCriacao=%(dataCriacao)s, " 
+                "aprovacao=%(aprovacao)s WHERE numProj=%(numProj)s")
         try:
-            data = {'numProj': numProj, 'descricao': projetoLei.descricao,
-            'dataCriacao': projetoLei.dataCriacao, 'aprovacao': projetoLei.aprovacao}
-            sql = "UPDATE projetoLei SET descricao = %(descricao)s, dataCriacao = %(dataCriacao)s \
-                aprovacao = %(aprovacao)s WHERE numProj = %(numProj)s"
-            cursor.execute(sql, data)
+            cursor.execute(sql, vars(projetoLei))
         except Exception as ex:
             print(ex)
         
     def delete(self, cursor, numProj):
-
+        sql = ("DELETE FROM politicoEscreveProjetoLei WHERE projetoLeiNumProj=%(numProj)s; "
+                "DELETE FROM politicoVotaProjetoLei WHERE projetoLeiNumProj=%(numProj)s; "
+                "DELETE FROM projetoLei WHERE numProj=%(numProj)s;")
         try:
-            sql = f"DELETE * FROM projetoLei WHERE numProj = '{numProj}'"
-            cursor.execute(sql)
+            cursor.execute(sql, {"numProj":numProj})
         except Exception as ex:
             print(ex)
         
-    def findById(self, cursor, numProj):
-
+    def get(self, cursor, numProj):
+            sql = "SELECT * FROM projetoLei WHERE numProj=%s;"
         try:
-            sql = f"SELECT * FROM projetoLei WHERE numProj = '{numProj}'"
-            cursor.execute(sql)
+            cursor.execute(sql, (numProj,))
             result = cursor.fetchone()
-
-            numProj, descricao, dataCriacao, aprovacao = result
-            projetoLei = ProjetoLei(numProj, descricao, dataCriacao, aprovacao)
+            projetoLei = ProjetoLei(*result)
             return projetoLei
         except Exception as ex:
             print(ex)
             return None
 
-    def findAll(self, cursor):
+    def getAll(self, cursor):
         try:
-            sql = "SELECT * FROM projetoLei"
+            sql = "SELECT * FROM projetoLei;"
             cursor.execute(sql)
             result = cursor.fetchall()
-
-            return result
+            projetos = [ProjetoLei(*x) for x in result]
+            return projetos
         except Exception as ex:
             print(ex)
             return None
