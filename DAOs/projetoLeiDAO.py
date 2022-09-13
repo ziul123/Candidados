@@ -26,7 +26,7 @@ class ProjetoLeiDAO:
         try:
             data = {'numProj': numProj, 'descricao': projetoLei.descricao,
             'dataCriacao': projetoLei.dataCriacao, 'aprovacao': projetoLei.aprovacao}
-            sql = "UPDATE projetoLei SET descricao = %(descricao)s, dataCriacao = %(dataCriacao) \
+            sql = "UPDATE projetoLei SET descricao = %(descricao)s, dataCriacao = %(dataCriacao)s \
                 aprovacao = %(aprovacao)s WHERE numProj = %(numProj)s"
             cursor.execute(sql, data)
         except Exception as ex:
@@ -40,7 +40,7 @@ class ProjetoLeiDAO:
         except Exception as ex:
             print(ex)
         
-    def findByNumProj(self, cursor, numProj):
+    def findById(self, cursor, numProj):
 
         try:
             sql = f"SELECT * FROM projetoLei WHERE numProj = '{numProj}'"

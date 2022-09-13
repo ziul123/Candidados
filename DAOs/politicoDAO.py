@@ -23,7 +23,7 @@ class PoliticoDAO():
         try:
             data = {'CPF': CPF, 'nome': politico.nome,
             'candidatura': politico.candidatura, 'dataNasc': politico.dataNasc, 'foto': politico.foto}
-            sql = "UPDATE politico SET nome = %(nome)s, candidatura = %(candidatura)s, dataNasc = %(dataNasc)s, foto =' %(foto)s \
+            sql = "UPDATE politico SET nome = %(nome)s, candidatura = %(candidatura)s, dataNasc = %(dataNasc)s, foto = %(foto)s \
                 WHERE CPF = %(CPF)s"
             cursor.execute(sql, data)
         except Exception as ex:
