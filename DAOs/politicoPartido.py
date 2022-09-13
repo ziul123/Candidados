@@ -1,6 +1,3 @@
-from requests import delete
-
-
 class PoliticoPartido:
 
     def __init__(self, politicoCPF, partidoNumPart, dataFiliacao, cargo):
@@ -11,7 +8,7 @@ class PoliticoPartido:
 
     def create(self, cursor, politicoPartido):
 
-        sql = "INSERT INTO politicoPartido VALUES( %(politicoCPF)s, %(partidoNumPart)s, %(dataFiliacao)s, %(cargo)s"
+        sql = "INSERT INTO politicoPartido VALUES( %(politicoCPF)s, %(partidoNumPart)s, %(dataFiliacao)s, %(cargo)s;"
         try:
             cursor.execute(sql, vars(politicoPartido))
         except Exception as ex:
@@ -20,7 +17,7 @@ class PoliticoPartido:
     def update(self, cursor, politicoPartido):
 
         sql = "UPDATE politicoPartido SET cargos = %(cargos) WHERE politicoCPF = %(politicoCPF AND \
-            partidoNumPart = %(partidoNumPart) AND dataFiliacao = %(dataFiliacao))"
+            partidoNumPart = %(partidoNumPart) AND dataFiliacao = %(dataFiliacao));"
         try:
             cursor.execute(sql, vars(politicoPartido))
         except Exception as ex:
@@ -29,7 +26,7 @@ class PoliticoPartido:
     def delete(self, cursor, politicoCPF, partidoNumPart, dataFiliacao):
 
         sql = f"DELETE * FROM politicoPartido WHERE (politicoCPF = '{politicoCPF}' AND partidoNumPart = '{partidoNumPart}' \
-            AND dataFiliacao = '{dataFiliacao}')"
+            AND dataFiliacao = '{dataFiliacao}');"
         
         try:
             cursor.execute(sql)
@@ -39,7 +36,7 @@ class PoliticoPartido:
     def get(self, cursor, politicoCPF, partidoNumPart, dataFiliacao):
 
         sql = f"SELECT * FROM politicoPartido WHERE (politicoCPF = '{politicoCPF}' AND partidoNumPart = '{partidoNumPart}' \
-            AND dataFiliacao = '{dataFiliacao}')"
+            AND dataFiliacao = '{dataFiliacao}');"
         
         try:
             cursor.execute(sql)
@@ -53,7 +50,7 @@ class PoliticoPartido:
     
     def getAll(self, cursor):
 
-        sql = "SELECT * FROM politicoPartido"
+        sql = "SELECT * FROM politicoPartido;"
 
         try:
             cursor.execute(sql)
