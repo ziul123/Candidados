@@ -4,7 +4,7 @@ class Beneficio():
         self.nome = nome
         self.valor = valor
 
-class BeneficioDao():
+class BeneficioDAO():
     def __init__():
         pass
 
@@ -32,7 +32,7 @@ class BeneficioDao():
         except Exception as ex:
             print(ex)
 
-    def findByCPF(self, cursor, codBen):
+    def findById(self, cursor, codBen):
         try:
             sql = f"SELECT * FROM beneficio WHERE codBen = '{codBen}'"
             cursor.execute(sql)

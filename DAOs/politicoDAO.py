@@ -6,7 +6,7 @@ class Politico():
         self.dataNasc = dataNasc
         self.foto = foto
 
-class PoliticoDao():
+class PoliticoDAO():
     def __init__():
         pass
 
@@ -36,7 +36,7 @@ class PoliticoDao():
         except Exception as ex:
             print(ex)
 
-    def findByCPF(self, cursor, CPF):
+    def findById(self, cursor, CPF):
         try:
             sql = f"SELECT * FROM politico WHERE CPF = '{CPF}'"
             cursor.execute(sql)

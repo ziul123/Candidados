@@ -33,7 +33,7 @@ class PartidoDAO():
         except Exception as ex:
             print(ex)
 
-    def findByCPF(self, cursor, numPart):
+    def findById(self, cursor, numPart):
         try:
             sql = f"SELECT * FROM partido WHERE numpart = '{numPart}'"
             cursor.execute(sql)
