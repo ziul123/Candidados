@@ -49,13 +49,6 @@
    - Políticos
 ## CRUD
 ---
-# Opiniões:
-## Victor Hugo:
-- Acho que dá pra dar uma enxugada na quantidade de atributos das entidades
-- Sugestões de remoção:
-  1. Vara do processo
-  2. Verba Anual do Partido
-  3. Descrição do benefício
 
 # Ideia pra View
 - Histórico de partidos de cada político
