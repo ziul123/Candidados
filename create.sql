@@ -71,7 +71,7 @@ CREATE TABLE politicoVotaProjetoLei(
 );
 
 
-CREATE TABLE Local(
+CREATE TABLE local(
 	codLoc INT AUTO_INCREMENT PRIMARY KEY,
 	estado VARCHAR(45) NOT NULL,
 	municipio VARCHAR(45) NOT NULL
