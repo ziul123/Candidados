@@ -4,54 +4,53 @@ class Beneficio():
         self.nome = nome
         self.valor = valor
 
-class BeneficioDAO():
+class BeneficioDAO:
     def __init__():
         pass
 
     def create(self, cursor, beneficio):
+        sql = "INSERT INTO beneficio VALUES(%(codBen)s, %(nome)s, %(valor)s)"
         try:
-            data = {'codBen': beneficio.codBen, 'nome': beneficio.nome, 'valor': beneficio.valor}
-            sql = "INSERT INTO beneficio VALUES(%(codBen)s, %(nome)s, %(valor)s)"
-            cursor.execute(sql, data)
+            cursor.execute(sql, vars(beneficio))
         except Exception as ex:
             print(ex)
 
-    def update(self, cursor, beneficio, codBen):
-        try:
-            data = {'codBen': codBen, 'nome': beneficio.nome, 'valor': beneficio.valor}
-            sql = "UPDATE beneficio SET nome = %(nome)s, valor = %(valor)s \
+    def update(self, cursor, beneficio):
+        sql = "UPDATE beneficio SET nome = %(nome)s, valor = %(valor)s \
                 WHERE codBen = %(codBen)s"
-            cursor.execute(sql, data)
+        try:
+            cursor.execute(sql, vars(beneficio))
         except Exception as ex:
             print(ex)
 
     def delete(self, cursor, codBen):
+        sql = "DELETE FROM politicoPossuiBeneficio WHERE beneficioCodBen = %(codBen)s; \
+                DELETE FROM beneficio WHERE codBen = %(codBen)s;"
         try:
-            sql = f"DELETE FROM beneficio WHERE codBen = '{codBen}'"
-            cursor.execute(sql)
+            cursor.execute(sql, {'codBen': codBen})
         except Exception as ex:
             print(ex)
 
-    def findById(self, cursor, codBen):
+    def get(self, cursor, codBen):
+        sql = f"SELECT * FROM beneficio WHERE codBen = '{codBen}'"
         try:
-            sql = f"SELECT * FROM beneficio WHERE codBen = '{codBen}'"
             cursor.execute(sql)
             result = cursor.fetchone()
-
-            codBen, nome, valor = result
-            beneficio = Beneficio(codBen, nome, valor)
-            return beneficio
         except Exception as ex:
             print(ex)
             return None
+        
+        codBen, nome, valor = result
+        beneficio = Beneficio(codBen, nome, valor)
+        return beneficio
 
-    def findAll(self, cursor):
+    def getAll(self, cursor):
+        sql = "SELECT * FROM beneficio"
         try:
-            sql = "SELECT * FROM beneficio"
             cursor.execute(sql)
             result = cursor.fetchall()
-
-            return result
         except Exception as ex:
             print(ex)
             return None
+
+        return result
