@@ -29,7 +29,7 @@ class ProcessoDAO:
                 "DELETE FROM processo WHERE numProc=%(numProc)s;")
         try:
             cursor.execute(sql, {"numProc":numProc})
-        except:
+        except Exception as ex:
             print(ex)
 
     def get(self, cursor, numProc):

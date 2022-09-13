@@ -33,7 +33,8 @@ class ProjetoLeiDAO:
             print(ex)
         
     def get(self, cursor, numProj):
-            sql = "SELECT * FROM projetoLei WHERE numProj=%s;"
+        
+        sql = "SELECT * FROM projetoLei WHERE numProj=%s;"
         try:
             cursor.execute(sql, (numProj,))
             result = cursor.fetchone()
