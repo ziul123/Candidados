@@ -26,7 +26,7 @@ class ProjetoLeiDAO:
         try:
             data = {'numProj': numProj, 'descricao': projetoLei.descricao,
             'dataCriacao': projetoLei.dataCriacao, 'aprovacao': projetoLei.aprovacao}
-            sql = "UPDATE projetoLei SET numProj = %(numProj)s, descricao = %(descricao)s, dataCriacao = %(dataCriacao) \
+            sql = "UPDATE projetoLei SET descricao = %(descricao)s, dataCriacao = %(dataCriacao) \
                 aprovacao = %(aprovacao)s WHERE numProj = %(numProj)s"
             cursor.execute(sql, data)
         except Exception as ex:
