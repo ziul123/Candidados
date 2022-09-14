@@ -1,3 +1,5 @@
+USE candidados;
+
 CREATE TABLE politico(
 	CPF CHAR(11) PRIMARY KEY,
 	nome VARCHAR(45) NOT NULL,
@@ -82,7 +84,7 @@ CREATE TABLE orgao(
 	codOrg INT AUTO_INCREMENT PRIMARY KEY,
 	nome VARCHAR(45) NOT NULL,
 	localCodLoc INT,
-	FOREIGN KEY (localCodLoc) REFERENCES Local(codLoc)
+	FOREIGN KEY (localCodLoc) REFERENCES local(codLoc)
 );
 
 
