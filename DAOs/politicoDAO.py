@@ -15,7 +15,7 @@ class PoliticoDAO():
         except Exception as ex:
             print(ex)
 
-    def update(self, cursor, politico, CPF):
+    def update(self, cursor, politico):
         sql = ("UPDATE politico SET nome=%(nome)s, candidatura=%(candidatura)s, dataNasc=%(dataNasc)s, foto=%(foto)s "
                 "WHERE CPF=%(CPF)s;")
         try:

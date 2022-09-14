@@ -26,14 +26,14 @@ class PartidoDAO():
         sql = ("DELETE FROM politicoPartido WHERE partidoNumPart=%(numPart)s; "
                 "DELETE FROM partido WHERE numPart=%(numPart)s;")
         try:
-            cursor.execute(sql)
+            cursor.execute(sql, {'numPart':numPart})
         except Exception as ex:
             print(ex)
 
     def get(self, cursor, numPart):
-        sql = "SELECT * FROM partido WHERE numpart=%(numPart)s;"
+        sql = "SELECT * FROM partido WHERE numpart=%s;"
         try:
-            cursor.execute(sql)
+            cursor.execute(sql, (numPart,))
             result = cursor.fetchone()
             partido = Partido(*result)
             return partido
