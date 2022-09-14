@@ -115,6 +115,7 @@ dmypy.json
 
 setup.sql
 *.swp
+login.txt
 
 # Workbench backup
 *.bak
