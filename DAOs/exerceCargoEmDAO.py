@@ -1,5 +1,4 @@
 class ExerceCargoEm:
-
     def __init__(self, orgaoCodOrg, politicoCPF, dataEleito, nomeCargo, ambito, tempoMandato, salario):
         self.orgaoCodOrg = orgaoCodOrg
         self.politicoCPF = politicoCPF
@@ -11,50 +10,36 @@ class ExerceCargoEm:
 
 
 class ExerceCargoEmDAO:
-
-    def __init__(self):
-        pass
-
     def create(self, cursor, exerceCargoEm):
-
+        sql = "INTERT INTO exerceCargoEm VALUES(%(orgaoCodOrg)s, %(politicoCPF)s, %(dataEleito)s, %(nomeCargo)s, \
+            %(tempoMandato)s, %(salario)s);"
         try:
-            data = {'orgaoCodOrg': exerceCargoEm.orgaoCodOrg, 'politicoCPF': exerceCargoEm.politicoCPF,
-                    'dataEleito': exerceCargoEm.dataEleito, 'nomeCargo': exerceCargoEm.nomeCargo, 'ambito': exerceCargoEm.ambito,
-                    'tempoMandato': exerceCargoEm.tempoMandato, 'salario': exerceCargoEm.salario}
-            sql = "INTERT INTO exerceCargoEm VALUES(%(orgaoCodOrg)s, %(politicoCPF)s, %(dataEleito)s, %(nomeCargo)s, \
-                %(tempoMandato)s, %(salario)s)"
-            cursor.execute(sql, data)
+            cursor.execute(sql, vars(exerceCargoEm))
         except Exception as ex:
             print(ex)
 
-    def update(self, cursor, exerceCargoEm, orgaoCodOrg, politicoCPF, dataEleito):
-
+    def update(self, cursor, exerceCargoEm):
+        sql = "UPDATE exerceCargoEm SET nomeCargo = %(nomeCargo)s, ambito = %(ambito)s, tempoMandato = %(tempoMandato)s, \
+            salario = %(salario)s WHERE (orgaoCodOrg = %(orgaoCodOrg)s AND politicoCPF = %(politicoCPF)s AND \
+            dataEleito = %(dataEleito)s);"
         try:
-            data = {'orgaoCodOrg': orgaoCodOrg, 'politicoCPF': politicoCPF, 'dataEleito': dataEleito,
-                    'nomeCargo': exerceCargoEm.nomeCargo, 'ambito': exerceCargoEm.ambito,
-                    'tempoMandato': exerceCargoEm.tempoMandato, 'salario': exerceCargoEm.salario}
-            sql = "UPDATE exerceCargoEm SET nomeCargo = %(nomeCargo)s, ambito = %(ambito)s, tempoMandato = %(tempoMandato)s, \
-                salario = %(salario)s WHERE (orgaoCodOrg = %(orgaoCodOrg)s AND politicoCPF = %(politicoCPF)s AND \
-                dataEleito = %(dataEleito)s)"
-            cursor.execute(sql, data)
+            cursor.execute(sql, vars(exerceCargoEm))
         except Exception as ex:
             print(ex)
 
     def delete(self, cursor, orgaoCodOrg, politicoCPF, dataEleito):
-
+        sql = "DELETE FROM exerceCargoEm WHERE (orgaoCodOrg = %(orgaoCodOrg)s AND politicoCPF = %(politicoCPF)s \
+            AND dataEleito = %(dataEleito)s);"
         try:
-            sql = f"DELETE * FROM exerceCargoEm WHERE (orgaoCodOrg = '{orgaoCodOrg}' AND politicoCPF = '{politicoCPF}' \
-                AND dataEleito = '{dataEleito}'"
-            cursor.execute(sql)
+            cursor.execute(sql, (orgaoCodOrg, politicoCPF, dataEleito))
         except Exception as ex:
             print(ex)
 
-    def findById(self, cursor, orgaoCodOrg, politicoCPF, dataEleito):
-
+    def get(self, cursor, orgaoCodOrg, politicoCPF, dataEleito):
+        sql = "SELECT * FROM exerceCargoEm WHERE (orgaoCodOrg = %(orgaoCodOrg)s AND politicoCPF = %(politicoCPF)s \
+            AND dataEleito = %(dataEleito)s);"
         try:
-            sql = f"SELECT * FROM findById WHERE (orgaoCodOrg = '{orgaoCodOrg}' AND politicoCPF = '{politicoCPF}' \
-                AND dataEleito = '{dataEleito}'"
-            cursor.execute(sql)
+            cursor.execute(sql, (orgaoCodOrg, politicoCPF, dataEleito))
             result = cursor.fetchone()
 
             exerceCargoEm = ExerceCargoEm(*result)
@@ -64,9 +49,8 @@ class ExerceCargoEmDAO:
             return None
 
     def findAll(self, cursor):
-
+        sql = "SELECT * FROM exerceCargoEm;"
         try:
-            sql = "SELECT * FROM exerceCargoEm"
             cursor.execute(sql)
             result = cursor.fetchall()
 
