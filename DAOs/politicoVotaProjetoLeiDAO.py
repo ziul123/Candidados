@@ -31,7 +31,7 @@ class PoliticoVotaProjetoLeiDAO:
     def get(self, cursor, politicoCPF, projetoLeiNumProj):
         sql = "SELECT * FROM politicoVotaProjetoLei WHERE (politicoCPF = %s AND projetoLeiNumProj = %s);"
         try:
-            cursor.execute(sql)
+            cursor.execute(sql, (politicoCPF, projetoLeiNumProj))
             result = cursor.fetchone()
             politicoVotaProjetoLei = PoliticoVotaProjetoLei(*result)
             return politicoVotaProjetoLei
