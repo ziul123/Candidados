@@ -37,9 +37,9 @@ class PoliticoDAO():
             print(ex)
 
     def get(self, cursor, CPF):
-        sql = "SELECT * FROM politico WHERE CPF=%(CPF)s;"
+        sql = "SELECT * FROM politico WHERE CPF=%s;"
         try:
-            cursor.execute(sql)
+            cursor.execute(sql, (CPF,))
             result = cursor.fetchone()
             politico = Politico(*result)
             return politico
