@@ -32,7 +32,7 @@ class LocalDAO:
     def get(self, cursor, codLoc):
         sql = "SELECT * FROM local WHERE codLoc=%s;"
         try:
-            cursor.execute(sql)
+            cursor.execute(sql, (codLoc,))
             result = cursor.fetchone()
             local = Local(*result)
             return local

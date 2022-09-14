@@ -7,7 +7,7 @@ class Beneficio():
 
 class BeneficioDAO:
     def create(self, cursor, beneficio):
-        sql = "INSERT INTO beneficio VALUES(%(codBen)s, %(nome)s, %(valor)s)"
+        sql = "INSERT INTO beneficio VALUES(%(codBen)s, %(nome)s, %(valor)s);"
         try:
             cursor.execute(sql, vars(beneficio))
         except Exception as ex:
@@ -15,7 +15,7 @@ class BeneficioDAO:
 
     def update(self, cursor, beneficio):
         sql = "UPDATE beneficio SET nome = %(nome)s, valor = %(valor)s \
-                WHERE codBen = %(codBen)s"
+                WHERE codBen = %(codBen)s;"
         try:
             cursor.execute(sql, vars(beneficio))
         except Exception as ex:
