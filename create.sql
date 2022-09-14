@@ -3,7 +3,7 @@ CREATE TABLE politico(
 	nome VARCHAR(45) NOT NULL,
 	candidatura VARCHAR(45),
 	dataNasc DATE NOT NULL,
-	foto MEDIUMBLOB NOT NULL
+	foto MEDIUMBLOB
 );
 
 
@@ -12,7 +12,7 @@ CREATE TABLE partido(
 	nome VARCHAR(45) NOT NULL,
 	verbaAnual DECIMAL(15,2) NOT NULL,
 	dataCriacao DATE NOT NULL,
-	logo MEDIUMBLOB NOT NULL
+	logo MEDIUMBLOB
 );
 
 
