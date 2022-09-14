@@ -5,6 +5,7 @@ class Partido():
         self.dataCriacao = dataCriacao
         self.logo = logo        
 
+
 class PartidoDAO():
     def create(self, cursor, partido):
         sql = "INSERT INTO partido VALUES(%(numPart)s, %(nome)s, %(dataCriacao)s, %(logo)s);"

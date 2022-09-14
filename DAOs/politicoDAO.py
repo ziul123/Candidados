@@ -6,6 +6,7 @@ class Politico():
         self.dataNasc = dataNasc
         self.foto = foto
 
+
 class PoliticoDAO():
     def create(self, cursor, politico):
         sql = "INSERT INTO politico VALUES(%(CPF)s, %(nome)s, %(candidatura)s, %(dataNasc)s, %(foto)s);"

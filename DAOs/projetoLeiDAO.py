@@ -1,15 +1,14 @@
 class ProjetoLei:
-
     def __init__(self, numProj, descricao, dataCriacao, aprovacao):
         self.numProj = numProj
         self.descricao = descricao
         self.dataCriacao = dataCriacao
         self.aprovacao = aprovacao
 
-class ProjetoLeiDAO:
 
+class ProjetoLeiDAO:
     def create(self, cursor, projetoLei):
-        sql = "INSERT INTO projetoLei VALUES(%(numProj)s, %(descricao)s, %(dataCriacao)s, %(aprovacao)s)"
+        sql = "INSERT INTO projetoLei VALUES(%(numProj)s, %(descricao)s, %(dataCriacao)s, %(aprovacao)s);"
         try:
             cursor.execute(sql, vars(projetoLei))
         except Exception as ex:
@@ -17,7 +16,7 @@ class ProjetoLeiDAO:
 
     def update(self, cursor, projetoLei):
         sql = ("UPDATE projetoLei SET descricao=%(descricao)s, dataCriacao=%(dataCriacao)s, " 
-                "aprovacao=%(aprovacao)s WHERE numProj=%(numProj)s")
+                "aprovacao=%(aprovacao)s WHERE numProj=%(numProj)s;")
         try:
             cursor.execute(sql, vars(projetoLei))
         except Exception as ex:
@@ -33,7 +32,6 @@ class ProjetoLeiDAO:
             print(ex)
         
     def get(self, cursor, numProj):
-        
         sql = "SELECT * FROM projetoLei WHERE numProj=%s;"
         try:
             cursor.execute(sql, (numProj,))
@@ -42,7 +40,6 @@ class ProjetoLeiDAO:
             return projetoLei
         except Exception as ex:
             print(ex)
-            return None
 
     def getAll(self, cursor):
         try:
@@ -53,4 +50,3 @@ class ProjetoLeiDAO:
             return projetos
         except Exception as ex:
             print(ex)
-            return None

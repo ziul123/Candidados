@@ -4,10 +4,8 @@ class Beneficio():
         self.nome = nome
         self.valor = valor
 
-class BeneficioDAO:
-    def __init__():
-        pass
 
+class BeneficioDAO:
     def create(self, cursor, beneficio):
         sql = "INSERT INTO beneficio VALUES(%(codBen)s, %(nome)s, %(valor)s)"
         try:
@@ -32,25 +30,22 @@ class BeneficioDAO:
             print(ex)
 
     def get(self, cursor, codBen):
-        sql = f"SELECT * FROM beneficio WHERE codBen = '{codBen}'"
+        sql = "SELECT * FROM beneficio WHERE codBen=%s;"
         try:
-            cursor.execute(sql)
+            cursor.execute(sql, (codBen,))
             result = cursor.fetchone()
+            beneficio = Beneficio(*result)
+            return beneficio
         except Exception as ex:
             print(ex)
-            return None
         
-        codBen, nome, valor = result
-        beneficio = Beneficio(codBen, nome, valor)
-        return beneficio
 
     def getAll(self, cursor):
-        sql = "SELECT * FROM beneficio"
+        sql = "SELECT * FROM beneficio;"
         try:
             cursor.execute(sql)
             result = cursor.fetchall()
+            beneficios = [Beneficio(*x) for x in result]
+            return beneficios
         except Exception as ex:
             print(ex)
-            return None
-
-        return result

@@ -1,17 +1,12 @@
 class PoliticoVotaProjetoLei:
-
     def __init__(self, politicoCPF, projetoLeiNumProj, voto):
         self.politicoCPF = politicoCPF
         self.projetoLeiNumProj = projetoLeiNumProj
         self.voto = voto
     
+
 class PoliticoVotaProjetoLeiDAO:
-
-    def __init__(self):
-        pass
-
     def create(self, cursor, politicoVotaProjetoLei):
-
         sql = "INSERT INTO politicoVotaProjetoLei VALUES(%(politicoCPF)s, %(projetoLeiNumProj)s, %(voto)s);"
         try:
             cursor.execute(sql, vars(politicoVotaProjetoLei))
@@ -27,18 +22,14 @@ class PoliticoVotaProjetoLeiDAO:
             print(ex)
     
     def delete(self, cursor, politicoCPF, projetoLeiNumProj):
-
-        sql = f"DELETE * FROM politicoVotaProjetoLei WHERE(politicoCPF = '{politicoCPF}' AND projetoLeiNumProj = \
-            '{projetoLeiNumProj}');"
+        sql = "DELETE * FROM politicoVotaProjetoLei WHERE(politicoCPF = %s AND projetoLeiNumProj = %s);"
         try:
-            cursor.execute(sql)
+            cursor.execute(sql, (politicoCPF, projetoLeiNumProj))
         except Exception as ex:
             print(ex)
 
     def get(self, cursor, politicoCPF, projetoLeiNumProj):
-
-        sql = f"SELECT * FROM politicoVotaProjetoLei WHERE(politicoCPF = '{politicoCPF}' AND projetoLeiNumProj = \
-            '{projetoLeiNumProj}');"
+        sql = "SELECT * FROM politicoVotaProjetoLei WHERE (politicoCPF = %s AND projetoLeiNumProj = %s);"
         try:
             cursor.execute(sql)
             result = cursor.fetchone()

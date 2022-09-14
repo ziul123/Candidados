@@ -8,7 +8,6 @@ class Processo:
 
 
 class ProcessoDAO:
-
     def create(self, cursor, processo):
         sql = "INSERT INTO processo VALUES(%(numProc)s, %(andamento)s, %(dataInicio)s, %(autor)s, %(resultado)s);"
         try:

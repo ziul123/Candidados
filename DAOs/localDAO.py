@@ -4,55 +4,47 @@ class Local():
         self.estado = estado
         self.municipio = municipio
 
-class LocalDAO:
-    
-    def __init__():
-        pass
 
+class LocalDAO:
     def create(self, cursor, local):
+        sql = "INSERT INTO local VALUES(%(codLoc)s, %(estado)s, %(municipio)s);"
         try:
-            data = {'codLoc': local.codLoc, 'estado': local.estado, 'municipio': local.municipio}
-            sql = "INSERT INTO local VALUES(%(codLoc)s, %(estado)s, %(municipio)s)"
-            cursor.execute(sql, data)
+            cursor.execute(sql, vars(local))
         except Exception as ex:
             print(ex)
 
-    def update(self, cursor, local, codLoc):
+    def update(self, cursor, local):
+        sql = "UPDATE local SET estado = %(estado)s, municipio = %(municipio)s \
+            WHERE codLoc = %(codLoc)s;"
         try:
-            data = {'codLoc': codLoc, 'estado': local.estado, 'municipio': local.municipio}
-            sql = "UPDATE local SET estado = %(estado)s, municipio = %(municipio)s \
-                WHERE codLoc = %(codLoc)s"
-            cursor.execute(sql, data)
+            cursor.execute(sql, vars(local))
         except Exception as ex:
             print(ex)
 
     def delete(self, cursor, codLoc):
+        sql = ("DELETE FROM orgao WHERE localCodLoc=%(codLoc)s;"
+                "DELETE FROM local WHERE codLoc = %(codLoc)s;")
         try:
-            sql = f"DELETE FROM local WHERE codLoc = '{codLoc}'"
-            cursor.execute(sql)
+            cursor.execute(sql, {"codLoc":codLoc})
         except Exception as ex:
             print(ex)
 
     def get(self, cursor, codLoc):
+        sql = "SELECT * FROM local WHERE codLoc=%s;"
         try:
-            sql = f"SELECT * FROM local WHERE codLoc = '{codLoc}'"
             cursor.execute(sql)
             result = cursor.fetchone()
-
-            codLoc, estado, municipio = result
-            local = Local(codLoc, estado, municipio)
+            local = Local(*result)
             return local
         except Exception as ex:
             print(ex)
-            return None
 
     def getAll(self, cursor):
+        sql = "SELECT * FROM local;"
         try:
-            sql = "SELECT * FROM local"
             cursor.execute(sql)
             result = cursor.fetchall()
-
-            return result
+            locais = [Local(*x) for x in result]
+            return locais
         except Exception as ex:
             print(ex)
-            return None

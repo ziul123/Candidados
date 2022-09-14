@@ -1,56 +1,50 @@
 class Orgao():
-    def __init__(self, codOrg, nome):
+    def __init__(self, codOrg, nome, localCodLoc):
         self.codOrg = codOrg
         self.nome = nome
+        self.localCodLoc = localCodLoc
+
 
 class OrgaoDAO():
-    def __init__():
-        pass
-
     def create(self, cursor, orgao):
+        sql = "INSERT INTO partido VALUES(%(codOrg)s, %(nome)s, %(localCodLoc);"
         try:
-            data = {'codOrg': orgao.codOrg, 'nome': orgao.nome}
-            sql = "INSERT INTO partido VALUES(%(codOrg)s, %(nome)s)"
-            cursor.execute(sql, data)
+            cursor.execute(sql, vars(orgao))
         except Exception as ex:
             print(ex)
 
-    def update(self, cursor, orgao, codOrg):
+    def update(self, cursor, orgao):
+        sql = "UPDATE orgao SET nome = %(nome)s, localCodLoc=%(localCodLoc)s \
+            WHERE codOrg = %(codOrg)s;"
         try:
-            data = {'codOrg': codOrg, 'nome':orgao.nome}
-            sql = "UPDATE orgao SET nome = %(nome)s \
-                WHERE codOrg = %(codOrg)s"
-            cursor.execute(sql, data)
+            cursor.execute(sql, vars(orgao))
         except Exception as ex:
             print(ex)
 
     def delete(self, cursor, codOrg):
+        sql = ("DELETE FROM exerceCargoEm WHERE codOrg=%(codOrg)s;"
+                "DELETE FROM orgao WHERE codOrg=%(codOrg)s")
         try:
-            sql = f"DELETE FROM orgao WHERE codOrg = '{codOrg}'"
-            cursor.execute(sql)
+            cursor.execute(sql, {"codOrg":codOrg)
         except Exception as ex:
             print(ex)
 
-    def findById(self, cursor, codOrg):
+    def get(self, cursor, codOrg):
+        sql = "SELECT * FROM orgao WHERE codOrg=%s;"
         try:
-            sql = f"SELECT * FROM orgao WHERE codOrg = '{codOrg}'"
-            cursor.execute(sql)
+            cursor.execute(sql, (codOrg,))
             result = cursor.fetchone()
-
-            codOrg, nome = result
-            orgao = Orgao(codOrg, nome)
+            orgao = Orgao(*result)
             return orgao
         except Exception as ex:
             print(ex)
-            return None
 
-    def findAll(self, cursor):
+    def getAll(self, cursor):
+        sql = "SELECT * FROM orgao;"
         try:
-            sql = "SELECT * FROM orgao"
             cursor.execute(sql)
             result = cursor.fetchall()
-
-            return result
+            orgaos = [Orgao(*x) for x in result]
+            return orgaos
         except Exception as ex:
             print(ex)
-            return None
