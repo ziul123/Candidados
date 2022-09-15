@@ -3,6 +3,8 @@
 - Apresentação do site (textinho)
 - Barra de pesquisa (pesquisar políticos (e talvez partidos também))
 - Aba de partidos, políticos e candidatos
+## Políticos
+- Lista todos os políticos
 ## Político
 - Foto
 - Nome
@@ -38,8 +40,8 @@
   - Resultado
   - Data
   - Vara
-## Candidato
-   - Seleção de políticos que são candidatos  
+## Partidos
+- Lista todos os partidos 
 ## Partido
    - Logo
    - Nome
