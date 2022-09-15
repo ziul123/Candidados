@@ -55,3 +55,12 @@ class PoliticoDAO():
             return politicos
         except Exception as ex:
             print(ex)
+
+    def getCandidatos(self, cursor):
+        sql = "SELECT * FROM politico WHERE cadidatura IS NOT NULL;"
+        try:
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            candidatos = [Politico(*x) for x in result]
+        except Exception as ex:
+            print(ex)
