@@ -1,7 +1,6 @@
 # Páginas do Site
 ### Home
 - Apresentação do site (textinho)
-- Barra de pesquisa (pesquisar políticos)
 - Aba de partidos, políticos e candidatos
 ### Políticos
 - Lista todos os políticos
