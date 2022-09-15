@@ -3,6 +3,8 @@
 - Apresentação do site (textinho)
 - Barra de pesquisa (pesquisar políticos)
 - Aba de partidos, políticos e candidatos
+### Políticos
+- Lista todos os políticos
 ### Político
 - Foto
 - Nome
@@ -17,10 +19,9 @@
   - Nome do Cargo
   - Âmbito
   - Órgão
-    - Nome
     - Local (estado e cidade)
   - Salário
-  - Tempo Mandato/Cumprido
+  - Tempo de Mandato
 - Processos
 ### Projeto de Lei
 - Número do PL
@@ -35,8 +36,8 @@
 - Andamento
 - Resultado
 - Data
-### Candidato
-   - Seleção de políticos que são candidatos  
+### Partidos
+- Lista todos os partidos 
 ### Partido
    - Logo
    - Nome

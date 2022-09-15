@@ -1,0 +1,310 @@
+<!-- <!doctype html>
+<html lang="pt">
+<head> 
+    <title>AAAAAAAAAAAAA</title>
+    <style>
+        .tabelonha {
+            Overflow-y:scroll;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div  class="tabelinha""overflow-x:auto;">
+        <table>
+        <tr>
+        <th>Welcome to my domain</th>
+        <th>Name</th>
+        <th>Email</th>
+        </tr>
+        <tr>
+        <td>Sivaraman</td>
+        <td>Sivaraman</td>
+        <td>ramansiva57@gmail.com</td>
+        </div>
+    </center>
+</body>
+</html> -->
+
+{% extends 'base.html' %}
+
+{%block title%} Sexto Andar! {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1 style="text-align:center">CRUD</h1>
+</div>
+
+<style>
+  .table-wrapper {
+      width: 1200px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;	
+      box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  }
+  .table-title {
+      padding-bottom: 10px;
+      margin: 0 0 10px;
+  }
+  .table-title h2 {
+      margin: 6px 0 0;
+      font-size: 22px;
+  }
+  .table-title .add-new {
+      float: right;
+      height: 30px;
+      font-weight: bold;
+      font-size: 12px;
+      text-shadow: none;
+      min-width: 100px;
+      border-radius: 50px;
+      line-height: 13px;
+  }
+  .table-title .add-new i {
+      margin-right: 4px;
+  }
+  table.table {
+      table-layout: fixed;
+  }
+  table.table tr th, table.table tr td {
+      border-color: #e9e9e9;
+  }
+  table.table th i {
+      font-size: 13px;
+      margin: 0 10px;
+      cursor: pointer;
+  }
+  table.table th:last-child {
+      width: 100px;
+  }
+  table.table td a {
+      cursor: pointer;
+      display: inline-block;
+      margin: 0 5px;
+      min-width: 24px;
+  }    
+  table.table td a.add {
+      color: #27C46B;
+  }
+  table.table td a.edit {
+      color: #FFC107;
+  }
+  table.table td a.delete {
+      color: #E34724;
+  }
+  table.table td i {
+      font-size: 19px;
+  }
+  table.table td a.add i {
+      font-size: 24px;
+      margin-right: -1px;
+      position: relative;
+      top: 3px;
+  }    
+  table.table .form-control {
+      height: 32px;
+      line-height: 32px;
+      box-shadow: none;
+      border-radius: 2px;
+  }
+  table.table .form-control.error {
+      border-color: #f50000;
+  }
+  table.table td .add {
+      display: none;
+  }
+</style>
+
+<script>
+  $(document).ready(function(){
+    cpf = '';
+    //$('[data-toggle="tooltip"]').tooltip();
+    var actions = $("table td:last-child").html();;
+    // Add row on add button click
+
+    $(document).on("click", ".add", function(){
+      var empty = false;
+      var input = $(this).parents("tr").find('input');
+          input.each(function(){
+        if(!$(this).val()){
+          $(this).addClass("error");
+          empty = true;
+        } else{
+                  $(this).removeClass("error");
+              }
+      });
+      $(this).parents("tr").find(".error").first().focus();
+      if(!empty){
+        var i = 1;
+            var json = {};
+            json['p0'] = cpf;
+			input.each(function(){
+                //alert('ref: '+i+" value: "+$(this).val());
+                if(i == 3){
+                    if($(this).prop("checked")){
+                        $(this).parent("td").html($(this).val());
+                        json['p'+i] = 'masculino';
+                    } 
+                    i++;
+                }
+                else if(i == 4){
+                    if($(this).prop("checked")){
+                        $(this).parent("td").html($(this).val());
+                        json['p'+3] = 'feminino';
+                    }
+                    i++; 
+                }
+                else if(i == 5){
+                    if($(this).prop("checked")){
+                        $(this).parent("td").html($(this).val());
+                        json['p'+3] = 'outros';
+                    }
+                    i++;
+                }
+                else{
+                    $(this).parent("td").html($(this).val());
+                    json['p'+i] = $(this).val();
+                    i++;
+                }
+			});
+            //alert (JSON.stringify(json));
+            
+            $(this).parents("tr").find(".add, .edit").toggle();
+    
+            $.ajax({
+                url: '/crud_cliente',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(json),
+                dataType: 'json',
+                success: function(result) {
+                    // handle success
+	                alert('Usuario Atualizado com Sucesso');
+                },
+                error: function(request,msg,error) {
+                    // handle failure
+                    alert('ERROR');
+                }
+            });
+		}		
+      });
+    // Edit row on edit button click
+    $(document).on("click", ".edit", function(){		
+        var i = 0;
+            $(this).parents("tr").find("td:not(:last-child)").each(function(){
+                if (i == 0){
+                    cpf = $(this).text();
+                }
+                else if (i == 2){
+                    $(this).html('<input type="date" class="form-control" value="' + $(this).text() + '">');
+                }
+                else if (i == 3){
+                    checkM = ''; checkF = ''; checkO = '';
+                    if($(this).text() == 'masculino'){
+                        checkM = 'checked';
+                    }
+                    else if($(this).text() == 'feminino'){
+                        checkF = 'checked';
+                    }
+                    else if($(this).text() == 'outros'){
+                        checkO = 'checked';
+                    }
+                    $(this).html(`
+                    <input class="form-check-input" type="radio" value="masculino" name="sexo" id="Masculino" ` + checkM + `  >
+                    <label class="form-check-label" for="Masculino"> M </label>
+                    
+                    <input class="form-check-input" type="radio" value="feminino" name="sexo" id="Feminino" ` + checkF + `>
+                    <label class="form-check-label" for="Feminino"> F </label>
+                    
+                    <input class="form-check-input" type="radio" value="outros" name="sexo" id="Outros" ` + checkO + `>
+                    <label class="form-check-label" for="Outros"> O </label>
+                    `);
+                }
+                else{
+                    $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+                }
+                i += 1;
+            });		
+      $(this).parents("tr").find(".add, .edit").toggle();
+      $(".add-new").attr("disabled", "disabled");
+    });
+
+    
+    // Delete row on delete button click
+
+      $(document).on("click", ".delete", function(){
+        var self = this;
+        var id = '';
+        $(this).parents("tr").find("td:first").each(function(){
+            id = $(this).text();
+		});
+
+        $.ajax({
+            url: '/crud_cliente',
+            method: 'DELETE',
+            contentType: 'application/json',
+            data: JSON.stringify({'cpf':id}),
+            dataType: 'json',
+            success: function(result) {
+                // handle success
+                 $(self).parents("tr").remove();
+		         $(".add-new").removeAttr("disabled");
+                 alert('Usuario Deletado com Sucesso');
+            },
+            error: function(request,msg,error) {
+                // handle failure
+                alert('ERROR');
+            }
+        });
+
+       
+    });
+
+  });
+</script>
+
+<div class="container-fluid">
+  <div class="table-responsive">
+      <div class="table-wrapper">
+          <div class="table-title">
+              <div class="row">
+                  <div class="col-sm-8"><h2><b>Clientes</b></h2></div>
+                  <div class="col-sm-4">
+                        <a role="button" class="btn btn-info add-new" href="{{url_for('sign_up')}}"><i class="fa fa-plus"></i> Add New</a>
+                  </div>
+              </div>
+          </div>
+          <table class="table table-bordered">
+              <thead>
+                  <tr>
+                      <th style="width: 150px">CPF</th>
+                      <th style="width: 250px">Nome</th>
+                      <th style="width: 200px">Data de Nascimento</th>
+                      <th style="width: 150px">Sexo</th>
+                      <th>Ação</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for c in clientes %}
+                  <tr>
+                      <td>{{c[0]}}</td>
+                      <td>{{c[1]}}</td>
+                      <td>{{c[2]}}</td>
+                      <td>{{c[3]}}</td>
+                      <td>
+                        <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                      </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+
+{% endblock %}
