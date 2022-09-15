@@ -76,3 +76,14 @@ INSERT INTO projetoLei VALUES(4, "Castração de animais de rua", "2021-12-27", 
 INSERT INTO projetoLei VALUES(5, "Reforma da regularização da armamentação", "2020-08-10", "NÃO APROVADO");
 INSERT INTO projetoLei VALUES(6, "Incentivo para artistas de rua", "1992-02-28", "APROVADO");
 INSERT INTO projetoLei VALUES(7, "Restauração da mata da Araucária", "2022-01-12", "NÃO APROVADO");
+
+
+
+
+-- processo
+
+INSERT INTO processo VALUES(1, "2020-01-01", "João", "INOCENTADO", "58999956024");
+INSERT INTO processo VALUES(2, "2021-02-01", "João", "CULPADO", "63630773036");
+INSERT INTO processo VALUES(3, "2021-03-03", "Maria", "INOCENTADO", "54572974039");
+INSERT INTO processo VALUES(4, "2021-04-29", "Marcos", "CULPADO", "77976787071");
+INSERT INTO processo VALUES(5, "2021-05-15", "Estácio", "CULPADO", "08569069057");
