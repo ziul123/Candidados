@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{%block title%} Partido {% endblock %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2><b>Partido</b></h2></div>
+                    <div class="col-sm-4">
+                          <a role="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Adicionar</a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th style="width: 100px">Num. Partido</th>
+                        <th style="width: 250px">Nome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- {% for p in partido %}
+                    <tr>
+                        <td>{{p[0]}}</td>
+                        <td>{{p[1]}}</td>
+                        <td>{{p[2]}}</td>
+                        <td>{{p[3]}}</td>
+                        <td>
+                          <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                          <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                          <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    {% endfor %} -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
