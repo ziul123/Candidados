@@ -11,7 +11,7 @@ INSERT INTO politico VALUES("07429018076", "Henrique", "Deputado Estadual", "199
 INSERT INTO politico VALUES("43973086087", "Eduardo", "Deputado Federal", "1976-04-12", NULL); -- 12 PEM
 INSERT INTO politico VALUES("98030829060", "Thiago", "Vereador", "2000-04-01", NULL); -- 13 PLB
 INSERT INTO politico VALUES("96826773007", "Luiza", "Vereadora", "1998-05-29", NULL); -- 13 PLB
-INSERT INTO politico VALUES("18621276038", "Maria", "Deputada Estadual", "1988-07-06", NULL); -- 07 UNE
+INSERT INTO politico VALUES("18621276038", "Sara", "Deputada Estadual", "1988-07-06", NULL); -- 07 UNE
 INSERT INTO politico VALUES("83063484008", "Eduarda", NULL, "2001-06-06", NULL); -- 15 PLT
 
 -- partido
@@ -66,3 +66,13 @@ INSERT INTO politicoPossuiBeneficio VALUES("96826773007", 4);
 INSERT INTO politicoPossuiBeneficio VALUES("18621276038", 5);
 INSERT INTO politicoPossuiBeneficio VALUES("83063484008", 6);
 INSERT INTO politicoPossuiBeneficio VALUES("58999956024", 7);
+
+-- projetoLei
+
+INSERT INTO projetoLei VALUES(1, "Proibir o cigarro eletronico", "2022-07-19", "APROVADO");
+INSERT INTO projetoLei VALUES(2, "Legalizar Cannabis Sativa", "2022-09-14", "NÃO APROVADO");
+INSERT INTO projetoLei VALUES(3, "Adição dos produtos de higiene menstrual no SUS", "1994-10-04", "APROVADO");
+INSERT INTO projetoLei VALUES(4, "Castração de animais de rua", "2021-12-27", "APROVADO");
+INSERT INTO projetoLei VALUES(5, "Reforma da regularização da armamentação", "2020-08-10", "NÃO APROVADO");
+INSERT INTO projetoLei VALUES(6, "Incentivo para artistas de rua", "1992-02-28", "APROVADO");
+INSERT INTO projetoLei VALUES(7, "Restauração da mata da Araucária", "2022-01-12", "NÃO APROVADO");
