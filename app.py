@@ -13,11 +13,6 @@ def politicos():
 
     cursor = DAOs.cursor
 
-    print('\n\n\n\n\n\n\n')
-    print(cursor)
-    print('\n\n\n\n\n\n\n')
-
-
     # if request.method == 'DELETE':
     #     data = request.get_json()
     #     DAO().delete(cursor, data['cpf'])
@@ -39,10 +34,6 @@ def politicos():
     #     return '201'
 
     politicos = politicoDAO.PoliticoDAO().getAll(cursor)
-
-    print('\n\n\n\n\n\n\n')
-    print(politicos)
-    print('\n\n\n\n\n\n\n')
 
     return render_template("politicos.html", politicos = politicos)
 
