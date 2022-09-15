@@ -5,7 +5,7 @@
 - Aba de partidos, políticos e candidatos
 ### Políticos
 - Lista todos os políticos
-## Político
+### Político
 - Foto
 - Nome
 - Data de Nascimento/Idade
@@ -19,10 +19,9 @@
   - Nome do Cargo
   - Âmbito
   - Órgão
-    - Nome
     - Local (estado e cidade)
   - Salário
-  - Tempo Mandato/Cumprido
+  - Tempo de Mandato
 - Processos
 ### Projeto de Lei
 - Número do PL
