@@ -1,5 +1,6 @@
 from flask import *
 import DAOs
+from DAOs import politicoDAO
 
 app = Flask(__name__)
 
@@ -7,14 +8,15 @@ app = Flask(__name__)
 def home():
     return render_template("base.html")
 
-@app.route("/politicos")
-def homepoliticos():
-    return render_template("politicos.html")
-
 @app.route("/politicos", methods = ['GET', 'DELETE', 'PUT', 'POST'])
-def crud_cliente():
+def politicos():
 
     cursor = DAOs.cursor
+
+    print('\n\n\n\n\n\n\n')
+    print(cursor)
+    print('\n\n\n\n\n\n\n')
+
 
     # if request.method == 'DELETE':
     #     data = request.get_json()
@@ -36,17 +38,19 @@ def crud_cliente():
     #     cnx.connection.commit()
     #     return '201'
 
-    politicos = DAOs.PoliticosDAO().getall(cursor)
+    politicos = politicoDAO.PoliticoDAO().getAll(cursor)
 
+    print('\n\n\n\n\n\n\n')
     print(politicos)
+    print('\n\n\n\n\n\n\n')
 
-    return render_template("crud_cliente.html", politicos = politicos)
+    return render_template("politicos.html", politicos = politicos)
 
 @app.route("/candidatos", methods = ['GET', 'DELETE', 'PUT', 'POST'])
-def crud_cliente():
+def candidatos():
 
     cursor = DAOs.cursor
 
-    candidatos = DAOs.PoliticosDAO().getCandidatos(cursor)
+    candidatos = DAOs.PoliticoDAO().getCandidatos(cursor)
 
     return render_template("politicos.html", politicos = candidatos)

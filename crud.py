@@ -30,7 +30,7 @@ def crud_cliente():
 
     print(politicos)
 
-    return render_template("crud_cliente.html", politicos = politicos)
+    return render_template("politicos.html", politicos = politicos)
 
 @app.route("/candidatos", methods = ['GET', 'DELETE', 'PUT', 'POST'])
 def crud_cliente():
