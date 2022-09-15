@@ -123,13 +123,6 @@ INSERT INTO exerceCargoEm VALUES(3, "54572974039", "2020-10-30", "Vereador", "Mu
 INSERT INTO exerceCargoEm VALUES(4, "77976787071", "2020-10-30", "Deputado Estadual", "Estadual", 4, 25000.50);
 INSERT INTO exerceCargoEm VALUES(5, "08569069057", "2020-10-30", "Vereador", "Municipal", 4, 20000.00);
 INSERT INTO exerceCargoEm VALUES(6, "24309074022", "2020-10-30", "Deputado Estadual", "Estadual", 4, 20000.00);
---INSERT INTO exerceCargoEm VALUES(1);
---INSERT INTO exerceCargoEm VALUES();
---INSERT INTO exerceCargoEm VALUES();
---INSERT INTO exerceCargoEm VALUES();
---INSERT INTO exerceCargoEm VALUES();
---INSERT INTO exerceCargoEm VALUES();
---INSERT INTO exerceCargoEm VALUES();
 
 -- processo
 INSERT INTO processo VALUES(1, "2020-01-01", "João", "INOCENTADO", "58999956024");
