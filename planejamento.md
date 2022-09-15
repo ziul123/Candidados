@@ -1,60 +1,59 @@
 # Páginas do Site
-## Home
+### Home
 - Apresentação do site (textinho)
-- Barra de pesquisa (pesquisar políticos (e talvez partidos também))
+- Barra de pesquisa (pesquisar políticos)
 - Aba de partidos, políticos e candidatos
-## Políticos
+### Políticos
 - Lista todos os políticos
 ## Político
 - Foto
 - Nome
 - Data de Nascimento/Idade
 - Partido
-  - Nome do Partido
-  - Data de filiação
-  - Cargo no partido
 - Benefícios
-  - Nome/Descrição (qual a diferença?)
+  - Nome
   - Valor
 - Projetos de Lei
-  - Número do PL
-  - Aprovação
-  - Dois tipos:
-    1. Escritos
-    2. Votados
-        - Voto
 - Candidatura
 - Cargo Atual
   - Nome do Cargo
-  - Salário
-  - Tempo Mandato/Cumprido
-  - Data Eleito
   - Âmbito
   - Órgão
     - Nome
     - Local (estado e cidade)
+  - Salário
+  - Tempo Mandato/Cumprido
 - Processos
-  - Número
-  - Autor
-  - Andamento
-  - Resultado
-  - Data
-  - Vara
-## Partidos
+### Projeto de Lei
+- Número do PL
+- Aprovação
+- Dois tipos:
+  1. Escritos
+  2. Votados
+- Voto dos políticos
+### Processo
+- Número
+- Autor
+- Andamento
+- Resultado
+- Data
+### Partidos
 - Lista todos os partidos 
-## Partido
+### Partido
    - Logo
    - Nome
    - Número 
    - Data de Criação
    - Verba Anual
    - Políticos
-## CRUD
+     - Data de filiação
+     - Cargo
+### CRUD
 ---
 
-# Ideia pra View
+## Ideia pra View
 - Histórico de partidos de cada político
 - Histórico de cargos de cada político
 
-# Ideia pra Procedure
+## Ideia pra Procedure
 - Selecionar políticos por partido
