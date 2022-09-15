@@ -4,20 +4,40 @@
 
 {% block content %}
 <style>
-    .off{
-        background-color: unset;
-        border-width: 0px;
+</style>
+<script>
+
+    function productDelete(ctl) {
+        $(ctl).parents("tr").remove();
+    }
+  
+    function makeDELETErequest() {
+        $(document).on("click", ".delete", function(){
+        var self = this;
+        var cpf = '58999956024';
+        $(this).parents("tr").find("td:first").each(function(){
+            cpf = $(this).text();
+		});
+
+            $.ajax({
+                url: '/politicos',
+                method: 'DELETE',
+                contentType: 'application/json',
+                data: JSON.stringify({'cpf':cpf}),
+                dataType: 'json',
+                success: function(result) {
+                    $(self).parents("tr").remove();
+                    $(".add-new").removeAttr("disabled");
+                    alert('Politico Deletado com Sucesso');
+                },
+                error: function(request,msg,error) {
+                    alert('ERROR');
+                }
+            });
+        });
+
     }
 
-    .on{
-        border-width: 0px;
-        background-color: white;
-    }
-</style>
-function changeClass() {
-    document.getElementByClass("off").style = ;
-  }
-<script>
 
 </script>
 
@@ -38,6 +58,7 @@ function changeClass() {
             <table class="table table-sm">
                 <thead>
                     <tr>
+                        <th style="width: 250px">CPF</th>
                         <th style="width: 250px">Nome</th>
                         <th style="width: 100px">Data Nasc.</th>
                         <th style="width: 250px">Candidatura</th>
@@ -47,15 +68,14 @@ function changeClass() {
                 <tbody>
                     {% for p in politicos %}
                     <tr>
-                        <td>
-                            <input type="text" class="off" value={{p.nome}} disabled onclick="changeClass()">
-                        </td>
+                        <td>{{p.cpf}}</td>
+                        <td>{{p.nome}}</td>
                         <td>{{p.dataNasc}}</td>
                         <td>{{p.candidatura}}</td>
                         <!-- <td>{{p[3]}}</td> -->
                         <td>
                           <a class="edit" title="Edit" data-toggle="tooltip"> editar </a>
-                          <a class="delete" title="Delete" data-toggle="tooltip"> deletar    </a>
+                          <a class="delete" title="Delete" data-toggle="tooltip" onclick="makeDELETErequest()"> deletar</a>
                         </td>
                     </tr>
                     {% endfor %}

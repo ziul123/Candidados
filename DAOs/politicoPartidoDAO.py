@@ -10,6 +10,7 @@ class PoliticoPartidoDAO:
         sql = "INSERT INTO politicoPartido VALUES(%(politicoCPF)s, %(partidoNumPart)s, %(dataFiliacao)s, %(cargo)s);"
         try:
             cursor.execute(sql, vars(politicoPartido))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
     
@@ -18,6 +19,7 @@ class PoliticoPartidoDAO:
             partidoNumPart = %(partidoNumPart)s AND dataFiliacao = %(dataFiliacao)s);"
         try:
             cursor.execute(sql, vars(politicoPartido))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
@@ -26,6 +28,7 @@ class PoliticoPartidoDAO:
             AND dataFiliacao = %(dataFiliacao)s);"
         try:
             cursor.execute(sql, (politicoCPF, partidoNumPart, dataFiliacao))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 

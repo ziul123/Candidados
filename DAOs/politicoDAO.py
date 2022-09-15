@@ -1,3 +1,6 @@
+import DAOs
+
+
 class Politico():
     def __init__(self, cpf, nome, candidatura, dataNasc, foto):
         self.cpf = cpf
@@ -12,6 +15,7 @@ class PoliticoDAO():
         sql = "INSERT INTO politico VALUES(%(CPF)s, %(nome)s, %(candidatura)s, %(dataNasc)s, %(foto)s);"
         try:
             cursor.execute(sql, vars(politico))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
@@ -20,19 +24,15 @@ class PoliticoDAO():
                 "WHERE CPF=%(CPF)s;")
         try:
             cursor.execute(sql, vars(politico))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
     def delete(self, cursor, CPF):
-        sql = ("DELETE FROM politicoPartido WHERE politicoCPF=%(CPF)s; "
-                "DELETE FROM politicoPossuiBeneficio WHERE politicoCPF=%(CPF)s; "
-                "DELETE FROM politicoVotaProjetoLei WHERE politicoCPF=%(CPF)s; "
-                "DELETE FROM politicoEscreveProjetoLei WHERE politicoCPF=%(CPF)s; "
-                "DELETE FROM processoPolitico WHERE politicoCPF=%(CPF)s; "
-                "DELETE FROM exerceCargoEm WHERE politicoCPF=%(CPF)s; "
-                "DELETE FROM politico WHERE CPF=%(CPF)s;")
+        sql = ("DELETE FROM politico WHERE CPF=%(CPF)s;")
         try:
             cursor.execute(sql, {"CPF":CPF})
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 

@@ -10,6 +10,7 @@ class PoliticoVotaProjetoLeiDAO:
         sql = "INSERT INTO politicoVotaProjetoLei VALUES(%(politicoCPF)s, %(projetoLeiNumProj)s, %(voto)s);"
         try:
             cursor.execute(sql, vars(politicoVotaProjetoLei))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
@@ -18,6 +19,7 @@ class PoliticoVotaProjetoLeiDAO:
             %(projetoLeiNumProj})s;")
         try:
             cursor.execute(sql, vars(politicoVotaProjetoLei))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
     
@@ -25,6 +27,7 @@ class PoliticoVotaProjetoLeiDAO:
         sql = "DELETE * FROM politicoVotaProjetoLei WHERE(politicoCPF = %s AND projetoLeiNumProj = %s);"
         try:
             cursor.execute(sql, (politicoCPF, projetoLeiNumProj))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 

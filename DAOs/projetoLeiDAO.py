@@ -11,6 +11,7 @@ class ProjetoLeiDAO:
         sql = "INSERT INTO projetoLei VALUES(%(numProj)s, %(descricao)s, %(dataCriacao)s, %(aprovacao)s);"
         try:
             cursor.execute(sql, vars(projetoLei))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
@@ -19,15 +20,15 @@ class ProjetoLeiDAO:
                 "aprovacao=%(aprovacao)s WHERE numProj=%(numProj)s;")
         try:
             cursor.execute(sql, vars(projetoLei))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
         
     def delete(self, cursor, numProj):
-        sql = ("DELETE FROM politicoEscreveProjetoLei WHERE projetoLeiNumProj=%(numProj)s; "
-                "DELETE FROM politicoVotaProjetoLei WHERE projetoLeiNumProj=%(numProj)s; "
-                "DELETE FROM projetoLei WHERE numProj=%(numProj)s;")
+        sql = ("DELETE FROM projetoLei WHERE numProj=%(numProj)s;")
         try:
             cursor.execute(sql, {"numProj":numProj})
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
         

@@ -10,6 +10,7 @@ class OrgaoDAO():
         sql = "INSERT INTO partido VALUES(%(codOrg)s, %(nome)s, %(localCodLoc)s;"
         try:
             cursor.execute(sql, vars(orgao))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
@@ -18,14 +19,15 @@ class OrgaoDAO():
             WHERE codOrg = %(codOrg)s;"
         try:
             cursor.execute(sql, vars(orgao))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
     def delete(self, cursor, codOrg):
-        sql = ("DELETE FROM exerceCargoEm WHERE codOrg=%(codOrg)s;"
-                "DELETE FROM orgao WHERE codOrg=%(codOrg)s;")
+        sql = ("DELETE FROM orgao WHERE codOrg=%(codOrg)s;")
         try:
             cursor.execute(sql, {"codOrg":codOrg})
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 

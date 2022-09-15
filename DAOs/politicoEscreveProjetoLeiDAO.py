@@ -3,6 +3,7 @@ class PoliticoEscreveProjetoLeiDAO:
         sql = "INSERT INTO politicoEscreveProjetoLei VALUES(%s, %s);"
         try:
             cursor.execute(sql, (politicoCPF, projetoLeiNumProj))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
     
@@ -10,5 +11,6 @@ class PoliticoEscreveProjetoLeiDAO:
         sql = "DELETE * FROM politicoEscreveProjetoLei WHERE (politicoCPF=%s AND projetoLeiNumProj=%s);"
         try:
             cursor.execute(sql, (politicoCPF, projetoLeiNumProj))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
