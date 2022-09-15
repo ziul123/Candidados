@@ -1,31 +1,30 @@
 class Processo:
-    def __init__(self, numProc, andamento, dataInicio, autor, resultado):
+    def __init__(self, numProc, dataInicio, autor, resultado, politicoCPF):
         self.numProc = numProc
-        self.andamento = andamento
         self.dataInicio = dataInicio
         self.autor = autor
         self.resultado = resultado
+        self.politicoCPF = politicoCPF
 
 
 class ProcessoDAO:
     def create(self, cursor, processo):
-        sql = "INSERT INTO processo VALUES(%(numProc)s, %(andamento)s, %(dataInicio)s, %(autor)s, %(resultado)s);"
+        sql = "INSERT INTO processo VALUES(%(numProc)s, %(dataInicio)s, %(autor)s, %(resultado)s, %(politicoCPF)s);"
         try:
             cursor.execute(sql, vars(processo))
         except Exception as ex:
             print(ex)
 
     def update(self, cursor, processo):
-        sql = ("UPDATE processo SET andamento=%(andamento)s, dataInicio=%(dataInicio)s, "
-                "autor=%(autor)s, resultado=%(resultado)s WHERE numProc=%(numProc)s;")
+        sql = ("UPDATE processo SET dataInicio=%(dataInicio)s, autor=%(autor)s, "
+                "resultado=%(resultado)s, politicoCPF=%(politicoCPF)s WHERE numProc=%(numProc)s;")
         try:
             cursor.execute(sql, vars(processo))
         except Exception as ex:
             print(ex)
 
     def delete(self, cursor, numProc):
-        sql = ("DELETE FROM processoPolitico WHERE processoNumProc=%(numProc)s; "
-                "DELETE FROM processo WHERE numProc=%(numProc)s;")
+        sql = ("DELETE FROM processo WHERE numProc=%(numProc)s;")
         try:
             cursor.execute(sql, {"numProc":numProc})
         except Exception as ex:

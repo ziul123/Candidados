@@ -103,19 +103,11 @@ CREATE TABLE exerceCargoEm(
 
 CREATE TABLE processo(
 	numProc INT PRIMARY KEY,
-	andamento VARCHAR(45) NOT NULL,
 	dataInicio DATE NOT NULL,
 	autor VARCHAR(45) NOT NULL,
 	resultado ENUM('CULPADO', 'INOCENTADO')
-);
-
-
-CREATE TABLE processoPolitico(
-	processoNumProc INT,
 	politicoCPF CHAR(11),
-	FOREIGN KEY (processoNumProc) REFERENCES processo(numProc),
-	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF),
-	PRIMARY KEY (processoNumProc, politicoCPF)
+	FOREIGN KEY ((politicoCPF) REFERENCES politico(CPF)
 );
 
 
