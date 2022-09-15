@@ -1,4 +1,4 @@
-class Partido():
+class Partido:
     def __init__(self, numPart, nome, dataCriacao, logo):
         self.numPart = numPart
         self.nome = nome
@@ -6,7 +6,14 @@ class Partido():
         self.logo = logo        
 
 
-class PartidoDAO():
+class PoliticosNoPartido:
+    def __init__(self, politicoNome, dataFiliacao, cargo):
+        self.politicoNome = politicoNome
+        self.dataFiliacao = dataFiliacao
+        self.cargo = cargo
+
+
+class PartidoDAO:
     def create(self, cursor, partido):
         sql = "INSERT INTO partido VALUES(%(numPart)s, %(nome)s, %(dataCriacao)s, %(logo)s);"
         try:
@@ -49,3 +56,12 @@ class PartidoDAO():
             return partidos
         except Exception as ex:
             print(ex)
+
+    def getPoliticos(self, cursor, partidoNumPart):
+        try:
+            cursor.callproc("politicosNoPartido", (partidoNumPart,))
+            result = [r.fetchall() for r in cursor.stored_results()]
+            politicosNoPartido = [PoliticosNoPartido(*x) for x in result]
+            return politicosNoPartido
+        except Exception as ex:
+           print(ex) 
