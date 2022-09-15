@@ -132,11 +132,11 @@ WHERE t2.politicoCPF IS NULL;
 
 
 CREATE VIEW ultimoCargo AS
-SELECT t1.politicoCPF, t1.nomeCargo, t1.dataEleito, orgao.nome, t1.ambito, t1.salario, local.estado, local.cidade FROM exerceCargoEm AS t1
+SELECT t1.politicoCPF, t1.nomeCargo, t1.dataEleito, orgao.nome, t1.ambito, t1.salario, local.estado, local.municipio FROM exerceCargoEm AS t1
 LEFT JOIN exerceCargoEm AS t2
 ON t1.politicoCPF=t2.politicoCPF AND t1.dataEleito < t2.dataEleito
 JOIN orgao
-ON orgaoCodOrg=orgao.codOrg
+ON t1.orgaoCodOrg=orgao.codOrg
 JOIN local
 ON orgao.localCodLoc=local.codLoc
 WHERE t2.politicoCPF IS NULL;

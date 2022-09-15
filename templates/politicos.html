@@ -23,18 +23,18 @@
                 <thead>
                     <tr>
                         <th style="width: 250px">Nome</th>
-                        <th style="width: 100px">Idade</th>
+                        <th style="width: 100px">Data Nasc.</th>
                         <th style="width: 250px">Candidatura</th>
-                        <th style="width: 200px">Partido</th>
+                        <!-- <th style="width: 200px">Partido</th> -->
                     </tr>
                 </thead>
                 <tbody>
                     {% for p in politicos %}
                     <tr>
-                        <td>{{p[0]}}</td>
-                        <td>{{p[1]}}</td>
-                        <td>{{p[2]}}</td>
-                        <td>{{p[3]}}</td>
+                        <td>{{p.nome}}</td>
+                        <td>{{p.dataNasc}}</td>
+                        <td>{{p.candidatura}}</td>
+                        <!-- <td>{{p[3]}}</td> -->
                         <td>
                           <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                           <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
