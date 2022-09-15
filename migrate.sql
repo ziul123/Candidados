@@ -101,9 +101,37 @@ INSERT INTO politicoVotaProjetoLei VALUES("96826773007", 7, "SIM");
 INSERT INTO politicoVotaProjetoLei VALUES("18621276038", 5, "NÃO");
 INSERT INTO politicoVotaProjetoLei VALUES("83063484008", 4, "SIM");
 
+-- local
+INSERT INTO local VALUES(1, "DF", "Brasilia");
+INSERT INTO local VALUES(2, "BA", "Itabuna");
+INSERT INTO local VALUES(3, "RJ", "Rio de Janeiro");
+INSERT INTO local VALUES(4, "SP", "São Paulo");
+INSERT INTO local VALUES(5, "MG", "Belo Horizonte");
+
+-- orgao
+INSERT INTO orgao VALUES(1, "Senado", 1);
+INSERT INTO orgao VALUES(2, "Camara dos Deputados", 1);
+INSERT INTO orgao VALUES(3, "Camara Municipal de Itabuna", 2);
+INSERT INTO orgao VALUES(4, "Camara Estadual do Rio de Janeiro", 3);
+INSERT INTO orgao VALUES(5, "Camara Municipal de São Paulo", 4);
+INSERT INTO orgao VALUES(6, "Camara Estadual de Minas Gerais", 5);
+
+-- exerceCargoEm
+INSERT INTO exerceCargoEm VALUES(1, , "2018-10-30", "Senador", "Federal", 8, 30000.00);
+INSERT INTO exerceCargoEm VALUES(2, , "2018-10-30", "Deputado Federal", "Federal", 4, 29000.99);
+INSERT INTO exerceCargoEm VALUES(3, , "2020-10-30", "Vereador", "Municipal", 4, 20000.00);
+INSERT INTO exerceCargoEm VALUES(4, , "2020-10-30", "Deputado Estadual", "Estadual", 4, 25000.50);
+INSERT INTO exerceCargoEm VALUES(5, , "2020-10-30", "Vereador", "Municipal", 4, 20000.00);
+INSERT INTO exerceCargoEm VALUES(6, , "2020-10-30", "Deputado Estadual", "Estadual", 4, 20000.00);
+INSERT INTO exerceCargoEm VALUES();
+INSERT INTO exerceCargoEm VALUES();
+INSERT INTO exerceCargoEm VALUES();
+INSERT INTO exerceCargoEm VALUES();
+INSERT INTO exerceCargoEm VALUES();
+INSERT INTO exerceCargoEm VALUES();
+INSERT INTO exerceCargoEm VALUES();
 
 -- processo
-
 INSERT INTO processo VALUES(1, "2020-01-01", "João", "INOCENTADO", "58999956024");
 INSERT INTO processo VALUES(2, "2021-02-01", "João", "CULPADO", "63630773036");
 INSERT INTO processo VALUES(3, "2021-03-03", "Maria", "INOCENTADO", "54572974039");
