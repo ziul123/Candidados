@@ -57,7 +57,7 @@ class PoliticoDAO():
             print(ex)
 
     def getCandidatos(self, cursor):
-        sql = "SELECT * FROM politico WHERE cadidatura IS NOT NULL;"
+        sql = "SELECT * FROM politico WHERE candidatura IS NOT NULL;"
         try:
             cursor.execute(sql)
             result = cursor.fetchall()

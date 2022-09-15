@@ -42,6 +42,6 @@ def candidatos():
 
     cursor = DAOs.cursor
 
-    candidatos = DAOs.PoliticoDAO().getCandidatos(cursor)
+    candidatos = politicoDAO.PoliticoDAO().getCandidatos(cursor)
 
     return render_template("politicos.html", politicos = candidatos)
