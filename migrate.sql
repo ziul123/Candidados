@@ -1,18 +1,18 @@
 -- politico
 
-INSERT INTO politico VALUES("58999956024", "Ana", "Senadora", "2002-06-11", LOAD_FILE("./imagens/mulher1.jpeg")); -- 10 PCB
-INSERT INTO politico VALUES("63630773036", "Sofia", "Deputada Federal", "1993-08-11", LOAD_FILE("./imagens/mulher2.jpeg")); -- 12 PEM 
-INSERT INTO politico VALUES("54572974039", "Luiz", "Vereador", "2001-09-07", LOAD_FILE("./imagens/homem1.jpeg")); -- 13 PLB
-INSERT INTO politico VALUES("77976787071", "Carlos", NULL, "1974-01-13", LOAD_FILE("./imagens/homem2.jpeg")); -- 07 UNE
-INSERT INTO politico VALUES("08569069057", "Victor", "Vereador", "2001-12-12", LOAD_FILE("./imagens/")); -- 15 PLT
-INSERT INTO politico VALUES("24309074022", "Hugo", NULL, "1997-11-19", NULL); -- 23 PAF
-INSERT INTO politico VALUES("35306870066", "Lucas", "Deputado Distrital", "2003-10-31", NULL); -- 55 PTU
-INSERT INTO politico VALUES("07429018076", "Henrique", "Deputado Estadual", "1995-02-15", NULL); -- 10 PCB
-INSERT INTO politico VALUES("43973086087", "Eduardo", "Deputado Federal", "1976-04-12", NULL); -- 12 PEM
-INSERT INTO politico VALUES("98030829060", "Thiago", "Vereador", "2000-04-01", NULL); -- 13 PLB
-INSERT INTO politico VALUES("96826773007", "Luiza", "Vereadora", "1998-05-29", NULL); -- 13 PLB
-INSERT INTO politico VALUES("18621276038", "Sara", "Deputada Estadual", "1988-07-06", NULL); -- 07 UNE
-INSERT INTO politico VALUES("83063484008", "Eduarda", NULL, "2001-06-06", NULL); -- 15 PLT
+INSERT INTO politico VALUES("58999956024", "Ana", "Senadora", "2002-06-11", LOAD_FILE("/var/lib/mysql-files/mulher1.jpeg")); -- 10 PCB
+INSERT INTO politico VALUES("63630773036", "Sofia", "Deputada Federal", "1993-08-11", LOAD_FILE("/var/lib/mysql-files/mulher2.jpeg")); -- 12 PEM 
+INSERT INTO politico VALUES("54572974039", "Luiz", "Vereador", "2001-09-07", LOAD_FILE("/var/lib/mysql-files/homem1.jpeg")); -- 13 PLB
+INSERT INTO politico VALUES("77976787071", "Carlos", NULL, "1974-01-13", LOAD_FILE("/var/lib/mysql-files/homem2.jpeg")); -- 07 UNE
+INSERT INTO politico VALUES("08569069057", "Victor", "Vereador", "2001-12-12", LOAD_FILE("/var/lib/mysql-files/homem3.jpeg")); -- 15 PLT
+INSERT INTO politico VALUES("24309074022", "Hugo", NULL, "1997-11-19", LOAD_FILE("/var/lib/mysql-files/homem4.jpeg")); -- 23 PAF
+INSERT INTO politico VALUES("35306870066", "Lucas", "Deputado Distrital", "2003-10-31", LOAD_FILE("/var/lib/mysql-files/homem5.jpeg")); -- 55 PTU
+INSERT INTO politico VALUES("07429018076", "Henrique", "Deputado Estadual", "1995-02-15", LOAD_FILE("/var/lib/mysql-files/homem6.jpeg")); -- 10 PCB
+INSERT INTO politico VALUES("43973086087", "Eduardo", "Deputado Federal", "1976-04-12", LOAD_FILE("/var/lib/mysql-files/homem7.jpeg")); -- 12 PEM
+INSERT INTO politico VALUES("98030829060", "Thiago", "Vereador", "2000-04-01", LOAD_FILE("/var/lib/mysql-files/homem8.jpeg")); -- 13 PLB
+INSERT INTO politico VALUES("96826773007", "Luiza", "Vereadora", "1998-05-29", LOAD_FILE("/var/lib/mysql-files/mulher3.jpeg")); -- 13 PLB
+INSERT INTO politico VALUES("18621276038", "Sara", "Deputada Estadual", "1988-07-06", LOAD_FILE("/var/lib/mysql-files/mulher4.jpeg")); -- 07 UNE
+INSERT INTO politico VALUES("83063484008", "Eduarda", NULL, "2001-06-06", LOAD_FILE("/var/lib/mysql-files/mulher5.jpeg")); -- 15 PLT
 
 -- partido
 
@@ -117,12 +117,12 @@ INSERT INTO orgao VALUES(5, "Camara Municipal de São Paulo", 4);
 INSERT INTO orgao VALUES(6, "Camara Estadual de Minas Gerais", 5);
 
 -- exerceCargoEm
-INSERT INTO exerceCargoEm VALUES(1, , "2018-10-30", "Senador", "Federal", 8, 30000.00);
-INSERT INTO exerceCargoEm VALUES(2, , "2018-10-30", "Deputado Federal", "Federal", 4, 29000.99);
-INSERT INTO exerceCargoEm VALUES(3, , "2020-10-30", "Vereador", "Municipal", 4, 20000.00);
-INSERT INTO exerceCargoEm VALUES(4, , "2020-10-30", "Deputado Estadual", "Estadual", 4, 25000.50);
-INSERT INTO exerceCargoEm VALUES(5, , "2020-10-30", "Vereador", "Municipal", 4, 20000.00);
-INSERT INTO exerceCargoEm VALUES(6, , "2020-10-30", "Deputado Estadual", "Estadual", 4, 20000.00);
+INSERT INTO exerceCargoEm VALUES(1, "58999956024", "2018-10-30", "Senador", "Federal", 8, 30000.00);
+INSERT INTO exerceCargoEm VALUES(2, "63630773036", "2018-10-30", "Deputado Federal", "Federal", 4, 29000.99);
+INSERT INTO exerceCargoEm VALUES(3, "54572974039", "2020-10-30", "Vereador", "Municipal", 4, 20000.00);
+INSERT INTO exerceCargoEm VALUES(4, "77976787071", "2020-10-30", "Deputado Estadual", "Estadual", 4, 25000.50);
+INSERT INTO exerceCargoEm VALUES(5, "08569069057", "2020-10-30", "Vereador", "Municipal", 4, 20000.00);
+INSERT INTO exerceCargoEm VALUES(6, "24309074022", "2020-10-30", "Deputado Estadual", "Estadual", 4, 20000.00);
 INSERT INTO exerceCargoEm VALUES();
 INSERT INTO exerceCargoEm VALUES();
 INSERT INTO exerceCargoEm VALUES();
