@@ -105,9 +105,9 @@ CREATE TABLE processo(
 	numProc INT PRIMARY KEY,
 	dataInicio DATE NOT NULL,
 	autor VARCHAR(45) NOT NULL,
-	resultado ENUM('CULPADO', 'INOCENTADO')
+	resultado ENUM('CULPADO', 'INOCENTADO'),
 	politicoCPF CHAR(11),
-	FOREIGN KEY ((politicoCPF) REFERENCES politico(CPF)
+	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF)
 );
 
 
