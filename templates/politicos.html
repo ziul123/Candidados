@@ -3,7 +3,23 @@
 {%block title%} Candidados {% endblock %}
 
 {% block content %}
+<style>
+    .off{
+        background-color: unset;
+        border-width: 0px;
+    }
 
+    .on{
+        border-width: 0px;
+        background-color: white;
+    }
+</style>
+function changeClass() {
+    document.getElementByClass("off").style = ;
+  }
+<script>
+
+</script>
 
 <div class="container-fluid">
     <div class="table-responsive">
@@ -31,14 +47,15 @@
                 <tbody>
                     {% for p in politicos %}
                     <tr>
-                        <td>{{p.nome}}</td>
+                        <td>
+                            <input type="text" class="off" value={{p.nome}} disabled onclick="changeClass()">
+                        </td>
                         <td>{{p.dataNasc}}</td>
                         <td>{{p.candidatura}}</td>
                         <!-- <td>{{p[3]}}</td> -->
                         <td>
-                          <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                          <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                          <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                          <a class="edit" title="Edit" data-toggle="tooltip"> editar </a>
+                          <a class="delete" title="Delete" data-toggle="tooltip"> deletar    </a>
                         </td>
                     </tr>
                     {% endfor %}
