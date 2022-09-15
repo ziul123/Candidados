@@ -77,7 +77,29 @@ INSERT INTO projetoLei VALUES(5, "Reforma da regularização da armamentação",
 INSERT INTO projetoLei VALUES(6, "Incentivo para artistas de rua", "1992-02-28", "APROVADO");
 INSERT INTO projetoLei VALUES(7, "Restauração da mata da Araucária", "2022-01-12", "NÃO APROVADO");
 
+-- politicoEscreveProjetoLei
+INSERT INTO politicoEscreveProjetoLei VALUES("58999956024", 1);
+INSERT INTO politicoEscreveProjetoLei VALUES("07429018076", 2);
+INSERT INTO politicoEscreveProjetoLei VALUES("96826773007", 3);
+INSERT INTO politicoEscreveProjetoLei VALUES("18621276038", 4);
+INSERT INTO politicoEscreveProjetoLei VALUES("83063484008" ,5);
+INSERT INTO politicoEscreveProjetoLei VALUES("35306870066", 6);
+INSERT INTO politicoEscreveProjetoLei VALUES("98030829060", 7);
 
+-- politicoVotaProjetoLei
+INSERT INTO politicoVotaProjetoLei VALUES("58999956024", 2, "SIM");
+INSERT INTO politicoVotaProjetoLei VALUES("63630773036", 1, "NÃO");
+INSERT INTO politicoVotaProjetoLei VALUES("54572974039", 3, "SIM");
+INSERT INTO politicoVotaProjetoLei VALUES("77976787071", 4, "NÃO");
+INSERT INTO politicoVotaProjetoLei VALUES("08569069057", 6, "SIM");
+INSERT INTO politicoVotaProjetoLei VALUES("24309074022", 5, "NÃO");
+INSERT INTO politicoVotaProjetoLei VALUES("35306870066", 7, "SIM");
+INSERT INTO politicoVotaProjetoLei VALUES("07429018076", 3, "NÃO");
+INSERT INTO politicoVotaProjetoLei VALUES("43973086087", 1, "SIM");
+INSERT INTO politicoVotaProjetoLei VALUES("98030829060", 4, "NÃO");
+INSERT INTO politicoVotaProjetoLei VALUES("96826773007", 7, "SIM");
+INSERT INTO politicoVotaProjetoLei VALUES("18621276038", 5, "NÃO");
+INSERT INTO politicoVotaProjetoLei VALUES("83063484008", 4, "SIM");
 
 
 -- processo
