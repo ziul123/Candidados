@@ -1,6 +1,7 @@
 from flask import *
 import DAOs
 from DAOs import politicoDAO
+from DAOs import partidoDAO
 
 app = Flask(__name__)
 
@@ -13,11 +14,11 @@ def politicos():
 
     cursor = DAOs.cursor
 
-    # if request.method == 'DELETE':
-    #     data = request.get_json()
-    #     DAO().delete(cursor, data['cpf'])
-    #     cnx.connection.commit()
-    #     return '304'
+    if request.method == 'DELETE':
+        data = request.get_json()
+
+        politicoDAO.PoliticoDAO().delete(cursor, data['cpf'])
+        return '304'
 
     # if request.method == 'POST':
     #     data = request.get_json()
@@ -37,6 +38,16 @@ def politicos():
 
     return render_template("politicos.html", politicos = politicos)
 
+@app.route("/partidos", methods = ['GET', 'DELETE', 'PUT', 'POST'])
+def partidos():
+
+    cursor = DAOs.cursor
+
+    partidos = partidoDAO.PartidoDAO().getAll(cursor)
+
+
+    return render_template("partidos.html", partidos = partidos)
+
 @app.route("/candidatos", methods = ['GET', 'DELETE', 'PUT', 'POST'])
 def candidatos():
 
@@ -45,3 +56,18 @@ def candidatos():
     candidatos = politicoDAO.PoliticoDAO().getCandidatos(cursor)
 
     return render_template("politicos.html", politicos = candidatos)
+
+@app.route("/formpolitico", methods = ['POST'])
+def formpolitico():
+
+    cursor = DAOs.cursor
+
+    if request.method == 'POST':
+        data = request.get_json()
+        politico = politicoDAO.Politico(*data)
+    
+        politicoDAO.PoliticoDAO().create(cursor, politico)
+
+        return '201'
+
+    return render_template("form_politico.html")
