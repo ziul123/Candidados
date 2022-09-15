@@ -12,7 +12,6 @@ CREATE TABLE politico(
 CREATE TABLE partido(
 	numPart INT PRIMARY KEY,
 	nome VARCHAR(45) NOT NULL,
-	verbaAnual DECIMAL(15,2) NOT NULL,
 	dataCriacao DATE NOT NULL,
 	logo MEDIUMBLOB
 );
@@ -32,7 +31,6 @@ CREATE TABLE politicoPartido(
 CREATE TABLE beneficio(
 	codBen INT AUTO_INCREMENT PRIMARY KEY,
 	nome VARCHAR(45) NOT NULL,
-	descricao VARCHAR(100),
 	valor DECIMAL(15,2) NOT NULL
 );
 
@@ -105,7 +103,6 @@ CREATE TABLE exerceCargoEm(
 
 CREATE TABLE processo(
 	numProc INT PRIMARY KEY,
-	vara VARCHAR(45) NOT NULL,
 	andamento VARCHAR(45) NOT NULL,
 	dataInicio DATE NOT NULL,
 	autor VARCHAR(45) NOT NULL,

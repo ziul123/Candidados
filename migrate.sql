@@ -13,4 +13,6 @@ INSERT INTO politico VALUES("98030829060", "Thiago", "Vereador", "2000-04-01", N
 INSERT INTO politico VALUES("96826773007", "Luiza", "Vereadora", "1998-05-29", NULL);
 INSERT INTO politico VALUES("18621276038", "Maria", "Deputada Estadual", "1988-07-06", NULL);
 INSERT INTO politico VALUES("83063484008", "Eduarda", NULL, "2001-06-06", NULL);
- 
+
+-- Partidos
+INSERT INTO partido VALUES(10, "PCB", )
