@@ -39,3 +39,30 @@ INSERT INTO politicoPartido VALUES("98030829060", 13, "2006-09-12", "Membro");
 INSERT INTO politicoPartido VALUES("96826773007", 13, "2007-07-09", "Presidente");
 INSERT INTO politicoPartido VALUES("18621276038", 07, "1990-01-29", "Presidente");
 INSERT INTO politicoPartido VALUES("83063484008", 15, "2001-08-20", "Membro");
+
+-- beneficio
+
+INSERT INTO beneficio VALUES(1, "Auxilio Moradia", 5000.00);
+INSERT INTO beneficio VALUES(2, "Auxilio Terno", 400.00);
+INSERT INTO beneficio VALUES(3, "Auxilio Transporte", 1000.00);
+INSERT INTO beneficio VALUES(4, "Auxilio Doença", 10000.00);
+INSERT INTO beneficio VALUES(5, "Auxilio Alimentacao", 500.00);
+INSERT INTO beneficio VALUES(6, "Auxilio Pensao", 2000.00);
+INSERT INTO beneficio VALUES(7, "Auxilio Mudanca", 6500.00);
+
+-- politicoPossuiBeneficio
+
+INSERT INTO politicoPossuiBeneficio VALUES("58999956024", 1);
+INSERT INTO politicoPossuiBeneficio VALUES("63630773036", 2);
+INSERT INTO politicoPossuiBeneficio VALUES("54572974039", 3);
+INSERT INTO politicoPossuiBeneficio VALUES("77976787071", 4);
+INSERT INTO politicoPossuiBeneficio VALUES("08569069057", 5);
+INSERT INTO politicoPossuiBeneficio VALUES("24309074022", 6);
+INSERT INTO politicoPossuiBeneficio VALUES("35306870066", 7);
+INSERT INTO politicoPossuiBeneficio VALUES("07429018076", 1);
+INSERT INTO politicoPossuiBeneficio VALUES("43973086087", 2);
+INSERT INTO politicoPossuiBeneficio VALUES("98030829060", 3);
+INSERT INTO politicoPossuiBeneficio VALUES("96826773007", 4);
+INSERT INTO politicoPossuiBeneficio VALUES("18621276038", 5);
+INSERT INTO politicoPossuiBeneficio VALUES("83063484008", 6);
+INSERT INTO politicoPossuiBeneficio VALUES("58999956024", 7);
