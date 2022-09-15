@@ -32,8 +32,7 @@ class PartidoDAO:
             print(ex)
 
     def delete(self, cursor, numPart):
-        sql = ("DELETE FROM politicoPartido WHERE partidoNumPart=%(numPart)s; "
-                "DELETE FROM partido WHERE numPart=%(numPart)s;")
+        sql = ("DELETE FROM partido WHERE numPart=%(numPart)s;")
         try:
             cursor.execute(sql, {'numPart':numPart})
             DAOs.cnx.commit()

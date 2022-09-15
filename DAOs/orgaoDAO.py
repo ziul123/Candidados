@@ -24,8 +24,7 @@ class OrgaoDAO():
             print(ex)
 
     def delete(self, cursor, codOrg):
-        sql = ("DELETE FROM exerceCargoEm WHERE codOrg=%(codOrg)s;"
-                "DELETE FROM orgao WHERE codOrg=%(codOrg)s;")
+        sql = ("DELETE FROM orgao WHERE codOrg=%(codOrg)s;")
         try:
             cursor.execute(sql, {"codOrg":codOrg})
             DAOs.cnx.commit()

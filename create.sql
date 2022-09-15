@@ -23,7 +23,7 @@ CREATE TABLE politicoPartido(
 	dataFiliacao DATE,
 	cargo VARCHAR(45),
 	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF) ON DELETE CASCADE,
-	FOREIGN KEY (partidoNumPart) REFERENCES partido(numPart),
+	FOREIGN KEY (partidoNumPart) REFERENCES partido(numPart) ON DELETE CASCADE,
 	PRIMARY KEY (politicoCPF, partidoNumPart, dataFiliacao)
 );
 
@@ -39,7 +39,7 @@ CREATE TABLE politicoPossuiBeneficio(
 	politicoCPF CHAR(11),
 	beneficioCodBen INT,
 	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF) ON DELETE CASCADE,
-	FOREIGN KEY (beneficioCodBen) REFERENCES beneficio(codBen),
+	FOREIGN KEY (beneficioCodBen) REFERENCES beneficio(codBen) ON DELETE CASCADE,
 	PRIMARY KEY (politicoCPF, beneficioCodBen)
 );
 
@@ -56,7 +56,7 @@ CREATE TABLE politicoEscreveProjetoLei(
 	politicoCPF CHAR(11),
 	projetoLeiNumProj INT,
 	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF) ON DELETE CASCADE,
-	FOREIGN KEY (projetoLeiNumProj) REFERENCES projetoLei(numProj),
+	FOREIGN KEY (projetoLeiNumProj) REFERENCES projetoLei(numProj) ON DELETE CASCADE,
 	PRIMARY KEY (politicoCPF, projetoLeiNumProj)
 );
 
@@ -66,7 +66,7 @@ CREATE TABLE politicoVotaProjetoLei(
 	projetoLeiNumProj INT,
 	voto VARCHAR(45),
 	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF) ON DELETE CASCADE,
-	FOREIGN KEY (projetoLeiNumProj) REFERENCES projetoLei(numProj),
+	FOREIGN KEY (projetoLeiNumProj) REFERENCES projetoLei(numProj) ON DELETE CASCADE,
 	PRIMARY KEY (politicoCPF, projetoLeiNumProj)
 );
 
@@ -82,7 +82,7 @@ CREATE TABLE orgao(
 	codOrg INT AUTO_INCREMENT PRIMARY KEY,
 	nome VARCHAR(45) NOT NULL,
 	localCodLoc INT,
-	FOREIGN KEY (localCodLoc) REFERENCES local(codLoc)
+	FOREIGN KEY (localCodLoc) REFERENCES local(codLoc) ON DELETE CASCADE
 );
 
 
@@ -94,7 +94,7 @@ CREATE TABLE exerceCargoEm(
 	ambito VARCHAR(45) NOT NULL,
 	tempoMandato INT NOT NULL,
 	salario DECIMAL(15,2) NOT NULL,
-	FOREIGN KEY (orgaoCodOrg) REFERENCES orgao(codOrg),
+	FOREIGN KEY (orgaoCodOrg) REFERENCES orgao(codOrg) ON DELETE CASCADE,
 	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF) ON DELETE CASCADE,
 	PRIMARY KEY (orgaoCodOrg, politicoCPF, dataEleito)
 );

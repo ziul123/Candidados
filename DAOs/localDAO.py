@@ -24,8 +24,7 @@ class LocalDAO:
             print(ex)
 
     def delete(self, cursor, codLoc):
-        sql = ("DELETE FROM orgao WHERE localCodLoc=%(codLoc)s;"
-                "DELETE FROM local WHERE codLoc = %(codLoc)s;")
+        sql = ("DELETE FROM local WHERE codLoc = %(codLoc)s;")
         try:
             cursor.execute(sql, {"codLoc":codLoc})
             DAOs.cnx.commit()

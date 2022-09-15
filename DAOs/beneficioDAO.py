@@ -24,8 +24,7 @@ class BeneficioDAO:
             print(ex)
 
     def delete(self, cursor, codBen):
-        sql = "DELETE FROM politicoPossuiBeneficio WHERE beneficioCodBen = %(codBen)s; \
-                DELETE FROM beneficio WHERE codBen = %(codBen)s;"
+        sql = "DELETE FROM beneficio WHERE codBen = %(codBen)s;"
         try:
             cursor.execute(sql, {'codBen': codBen})
             DAOs.cnx.commit()
