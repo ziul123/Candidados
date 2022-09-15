@@ -12,7 +12,6 @@ CREATE TABLE politico(
 CREATE TABLE partido(
 	numPart INT PRIMARY KEY,
 	nome VARCHAR(45) NOT NULL,
-	verbaAnual DECIMAL(15,2) NOT NULL,
 	dataCriacao DATE NOT NULL,
 	logo MEDIUMBLOB
 );
@@ -32,7 +31,6 @@ CREATE TABLE politicoPartido(
 CREATE TABLE beneficio(
 	codBen INT AUTO_INCREMENT PRIMARY KEY,
 	nome VARCHAR(45) NOT NULL,
-	descricao VARCHAR(100),
 	valor DECIMAL(15,2) NOT NULL
 );
 
@@ -105,7 +103,6 @@ CREATE TABLE exerceCargoEm(
 
 CREATE TABLE processo(
 	numProc INT PRIMARY KEY,
-	vara VARCHAR(45) NOT NULL,
 	andamento VARCHAR(45) NOT NULL,
 	dataInicio DATE NOT NULL,
 	autor VARCHAR(45) NOT NULL,
@@ -132,11 +129,11 @@ WHERE t2.politicoCPF IS NULL;
 
 
 CREATE VIEW ultimoCargo AS
-SELECT t1.politicoCPF, t1.nomeCargo, t1.dataEleito, orgao.nome, t1.ambito, t1.salario, local.estado, local.cidade FROM exerceCargoEm AS t1
+SELECT t1.politicoCPF, t1.nomeCargo, t1.dataEleito, orgao.nome, t1.ambito, t1.salario, local.estado, local.municipio FROM exerceCargoEm AS t1
 LEFT JOIN exerceCargoEm AS t2
 ON t1.politicoCPF=t2.politicoCPF AND t1.dataEleito < t2.dataEleito
 JOIN orgao
-ON orgaoCodOrg=orgao.codOrg
+ON t1.orgaoCodOrg=orgao.codOrg
 JOIN local
 ON orgao.localCodLoc=local.codLoc
 WHERE t2.politicoCPF IS NULL;

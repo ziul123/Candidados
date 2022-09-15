@@ -51,7 +51,11 @@ class PoliticoDAO():
         try:
             cursor.execute(sql)
             result = cursor.fetchall()
+            print('\n\n\n\n\n\n\n')
+            print(result)
             politicos = [Politico(*x) for x in result]
+            print(politicos)
+            print('\n\n\n\n\n\n\n')
             return politicos
         except Exception as ex:
             print(ex)
@@ -62,5 +66,6 @@ class PoliticoDAO():
             cursor.execute(sql)
             result = cursor.fetchall()
             candidatos = [Politico(*x) for x in result]
+            return candidatos
         except Exception as ex:
             print(ex)
