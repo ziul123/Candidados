@@ -123,14 +123,31 @@ CREATE TABLE processoPolitico(
 
 
 CREATE VIEW ultimoPartido AS
-SELECT t1.* FROM politicoPartido AS t1
+SELECT t1.politicoCPF, t1.partidoNumPart, partido.nome, t1.dataFiliacao, t1.cargo FROM politicoPartido AS t1
 LEFT JOIN politicoPartido AS t2
 ON t1.politicoCPF=t2.politicoCPF AND t1.dataFiliacao < t2.dataFiliacao
+JOIN partido
+ON t1.partidoNumPart=partido.numPart
 WHERE t2.politicoCPF IS NULL;
 
 
 CREATE VIEW ultimoCargo AS
-SELECT t1.politicoCPF, t1.dataEleito, t1.nomeCargo FROM exerceCargoEm AS t1
+SELECT t1.politicoCPF, t1.nomeCargo, t1.dataEleito, orgao.nome, t1.ambito, t1.salario, local.estado, local.cidade FROM exerceCargoEm AS t1
 LEFT JOIN exerceCargoEm AS t2
 ON t1.politicoCPF=t2.politicoCPF AND t1.dataEleito < t2.dataEleito
+JOIN orgao
+ON orgaoCodOrg=orgao.codOrg
+JOIN local
+ON orgao.localCodLoc=local.codLoc
 WHERE t2.politicoCPF IS NULL;
+
+
+DELIMITER //
+CREATE PROCEDURE politicosNoPartido (IN num INT)
+BEGIN
+		SELECT politico.nome, dataFiliacao, cargo FROM ultimoPartido
+		JOIN politico
+		ON politicoCPF=CPF
+		WHERE partidoNumPart=num;
+END //
+DELIMITER ;
