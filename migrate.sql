@@ -1,10 +1,10 @@
 -- politico
 
-INSERT INTO politico VALUES("58999956024", "Ana", "Senadora", "2002-06-11", NULL); -- 10 PCB
-INSERT INTO politico VALUES("63630773036", "Sofia", "Deputada Federal", "1993-08-11", NULL); -- 12 PEM 
-INSERT INTO politico VALUES("54572974039", "Luiz", "Vereador", "2001-09-07", NULL); -- 13 PLB
-INSERT INTO politico VALUES("77976787071", "Carlos", NULL, "1974-01-13", NULL); -- 07 UNE
-INSERT INTO politico VALUES("08569069057", "Victor", "Vereador", "2001-12-12", NULL); -- 15 PLT
+INSERT INTO politico VALUES("58999956024", "Ana", "Senadora", "2002-06-11", LOAD_FILE("./imagens/mulher1.jpeg")); -- 10 PCB
+INSERT INTO politico VALUES("63630773036", "Sofia", "Deputada Federal", "1993-08-11", LOAD_FILE("./imagens/mulher2.jpeg")); -- 12 PEM 
+INSERT INTO politico VALUES("54572974039", "Luiz", "Vereador", "2001-09-07", LOAD_FILE("./imagens/homem1.jpeg")); -- 13 PLB
+INSERT INTO politico VALUES("77976787071", "Carlos", NULL, "1974-01-13", LOAD_FILE("./imagens/homem2.jpeg")); -- 07 UNE
+INSERT INTO politico VALUES("08569069057", "Victor", "Vereador", "2001-12-12", LOAD_FILE("./imagens/")); -- 15 PLT
 INSERT INTO politico VALUES("24309074022", "Hugo", NULL, "1997-11-19", NULL); -- 23 PAF
 INSERT INTO politico VALUES("35306870066", "Lucas", "Deputado Distrital", "2003-10-31", NULL); -- 55 PTU
 INSERT INTO politico VALUES("07429018076", "Henrique", "Deputado Estadual", "1995-02-15", NULL); -- 10 PCB
