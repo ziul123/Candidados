@@ -15,6 +15,7 @@ class ExerceCargoEmDAO:
             %(tempoMandato)s, %(salario)s);"
         try:
             cursor.execute(sql, vars(exerceCargoEm))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
@@ -24,6 +25,7 @@ class ExerceCargoEmDAO:
             dataEleito = %(dataEleito)s);"
         try:
             cursor.execute(sql, vars(exerceCargoEm))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
@@ -32,6 +34,7 @@ class ExerceCargoEmDAO:
             AND dataEleito = %s);"
         try:
             cursor.execute(sql, (orgaoCodOrg, politicoCPF, dataEleito))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 

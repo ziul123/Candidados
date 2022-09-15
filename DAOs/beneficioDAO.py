@@ -10,6 +10,7 @@ class BeneficioDAO:
         sql = "INSERT INTO beneficio VALUES(%(codBen)s, %(nome)s, %(valor)s);"
         try:
             cursor.execute(sql, vars(beneficio))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
@@ -18,6 +19,7 @@ class BeneficioDAO:
                 WHERE codBen = %(codBen)s;"
         try:
             cursor.execute(sql, vars(beneficio))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
@@ -26,6 +28,7 @@ class BeneficioDAO:
                 DELETE FROM beneficio WHERE codBen = %(codBen)s;"
         try:
             cursor.execute(sql, {'codBen': codBen})
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 

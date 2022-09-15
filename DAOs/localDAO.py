@@ -10,6 +10,7 @@ class LocalDAO:
         sql = "INSERT INTO local VALUES(%(codLoc)s, %(estado)s, %(municipio)s);"
         try:
             cursor.execute(sql, vars(local))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
@@ -18,6 +19,7 @@ class LocalDAO:
             WHERE codLoc = %(codLoc)s;"
         try:
             cursor.execute(sql, vars(local))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
@@ -26,6 +28,7 @@ class LocalDAO:
                 "DELETE FROM local WHERE codLoc = %(codLoc)s;")
         try:
             cursor.execute(sql, {"codLoc":codLoc})
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 

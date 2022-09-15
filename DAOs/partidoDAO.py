@@ -18,6 +18,7 @@ class PartidoDAO:
         sql = "INSERT INTO partido VALUES(%(numPart)s, %(nome)s, %(dataCriacao)s, %(logo)s);"
         try:
             cursor.execute(sql, vars(partido))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
@@ -26,6 +27,7 @@ class PartidoDAO:
                 "WHERE numPart=%(numPart)s;")
         try:
             cursor.execute(sql, vars(partido))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
@@ -34,6 +36,7 @@ class PartidoDAO:
                 "DELETE FROM partido WHERE numPart=%(numPart)s;")
         try:
             cursor.execute(sql, {'numPart':numPart})
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 

@@ -12,6 +12,7 @@ class ProcessoDAO:
         sql = "INSERT INTO processo VALUES(%(numProc)s, %(dataInicio)s, %(autor)s, %(resultado)s, %(politicoCPF)s);"
         try:
             cursor.execute(sql, vars(processo))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
@@ -20,6 +21,7 @@ class ProcessoDAO:
                 "resultado=%(resultado)s, politicoCPF=%(politicoCPF)s WHERE numProc=%(numProc)s;")
         try:
             cursor.execute(sql, vars(processo))
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
@@ -27,6 +29,7 @@ class ProcessoDAO:
         sql = ("DELETE FROM processo WHERE numProc=%(numProc)s;")
         try:
             cursor.execute(sql, {"numProc":numProc})
+            DAOs.cnx.commit()
         except Exception as ex:
             print(ex)
 
