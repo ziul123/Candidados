@@ -22,7 +22,7 @@ CREATE TABLE politicoPartido(
 	partidoNumPart INT,
 	dataFiliacao DATE,
 	cargo VARCHAR(45),
-	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF),
+	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF) ON DELETE CASCADE,
 	FOREIGN KEY (partidoNumPart) REFERENCES partido(numPart),
 	PRIMARY KEY (politicoCPF, partidoNumPart, dataFiliacao)
 );
@@ -38,7 +38,7 @@ CREATE TABLE beneficio(
 CREATE TABLE politicoPossuiBeneficio(
 	politicoCPF CHAR(11),
 	beneficioCodBen INT,
-	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF),
+	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF) ON DELETE CASCADE,
 	FOREIGN KEY (beneficioCodBen) REFERENCES beneficio(codBen),
 	PRIMARY KEY (politicoCPF, beneficioCodBen)
 );
@@ -55,7 +55,7 @@ CREATE TABLE projetoLei(
 CREATE TABLE politicoEscreveProjetoLei(
 	politicoCPF CHAR(11),
 	projetoLeiNumProj INT,
-	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF),
+	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF) ON DELETE CASCADE,
 	FOREIGN KEY (projetoLeiNumProj) REFERENCES projetoLei(numProj),
 	PRIMARY KEY (politicoCPF, projetoLeiNumProj)
 );
@@ -65,7 +65,7 @@ CREATE TABLE politicoVotaProjetoLei(
 	politicoCPF CHAR(11),
 	projetoLeiNumProj INT,
 	voto VARCHAR(45),
-	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF),
+	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF) ON DELETE CASCADE,
 	FOREIGN KEY (projetoLeiNumProj) REFERENCES projetoLei(numProj),
 	PRIMARY KEY (politicoCPF, projetoLeiNumProj)
 );
@@ -95,7 +95,7 @@ CREATE TABLE exerceCargoEm(
 	tempoMandato INT NOT NULL,
 	salario DECIMAL(15,2) NOT NULL,
 	FOREIGN KEY (orgaoCodOrg) REFERENCES orgao(codOrg),
-	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF),
+	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF) ON DELETE CASCADE,
 	PRIMARY KEY (orgaoCodOrg, politicoCPF, dataEleito)
 );
 
@@ -107,7 +107,7 @@ CREATE TABLE processo(
 	autor VARCHAR(45) NOT NULL,
 	resultado ENUM('CULPADO', 'INOCENTADO'),
 	politicoCPF CHAR(11),
-	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF)
+	FOREIGN KEY (politicoCPF) REFERENCES politico(CPF) ON DELETE CASCADE
 );
 
 

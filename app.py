@@ -56,3 +56,18 @@ def candidatos():
     candidatos = politicoDAO.PoliticoDAO().getCandidatos(cursor)
 
     return render_template("politicos.html", politicos = candidatos)
+
+@app.route("/formpolitico", methods = ['POST'])
+def formpolitico():
+
+    cursor = DAOs.cursor
+
+    if request.method == 'POST':
+        data = request.get_json()
+        politico = politicoDAO.Politico(*data)
+    
+        politicoDAO.PoliticoDAO().create(cursor, politico)
+
+        return '201'
+
+    return render_template("form_politico.html")
