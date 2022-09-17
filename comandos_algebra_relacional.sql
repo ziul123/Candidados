@@ -17,4 +17,4 @@ WHERE CPF = politicoCPF AND codBen = beneficioCodBen AND valor > 5000;
 
 -- Seleciona nome do politico, nome do partido e data de filiacao
 SELECT politico.nome AS Nome, partido.nome AS Partido, dataFiliacao FROM politico, partido, politicoPartido
-WHERE CPF = politicoCPF AND numPart = partidoNumPart;
+WHERE CPF = politicoCPF AND numPart = partidoNumPart AND dataFiliacao > "2005-01-01";
