@@ -8,12 +8,12 @@ SELECT politico.nome, ambito, municipio, estado FROM politico, exerceCargoEm, or
 WHERE CPF = politicoCPF AND codOrg = orgaoCodOrg AND codLoc = localCodLoc;
 
 -- Seleciona nome, descricao do projeto de lei e voto do politico nesse projeto
-SELECT nome, descricao, voto FROM politico, politicoVotaProjetoLei, projetoLei
+SELECT nome, descricao, voto FROM politico, projetoLei, politicoVotaProjetoLei
 WHERE CPF = politicoCPF AND numProj = projetoLeiNumProj;
 
 -- Seleciona nome do politico, nome e valor do beneficio
 SELECT politico.nome AS Nome, beneficio.nome AS Beneficio, valor FROM politico, beneficio, politicoPossuiBeneficio
-WHERE CPF = politicoCPF AND codBen = beneficioCodBen;
+WHERE CPF = politicoCPF AND codBen = beneficioCodBen AND valor > 5000;
 
 -- Seleciona nome do politico, nome do partido e data de filiacao
 SELECT politico.nome AS Nome, partido.nome AS Partido, dataFiliacao FROM politico, partido, politicoPartido
